@@ -1,0 +1,105 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+  background: #1a1a1a;
+  padding: 0 1vw;
+}
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 35vh;
+}
+.nav_bar_field {
+  background: white;
+  display: flex;
+  align-items: center;
+}
+.nav_bar_field a {
+  display: block;
+  color: black;
+  padding: 0 1.5vw;
+  height: 5vh;
+  line-height: 5vh;
+}
+.nav #time {
+  font-size: 0.8vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 91.5vh;
+  width: 100vw;
+}
+.container .calendar {
+  display: flex;
+  flex-direction: column;
+  width: 76vw;
+  margin: 2vh 2vw;
+  padding: 1vh 1vw;
+}
+.container .calendar_nav {
+  width: 76vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container .calendar_nav_title {
+  background: white;
+  color: black;
+  width: 15vw;
+  padding: 0.5vh 0.5vw;
+  text-align: center;
+}
+.container .calendar_nav_bar_field {
+  color: black;
+  background: white;
+  padding: 0.5vh 0.5vw;
+  cursor: pointer;
+}
+.container .calendar_list {
+  display: flex;
+  flex-direction: column;
+  border: 0.3vw solid white;
+  border-radius: 0 0 2% 2%;
+  height: 80vh;
+  padding-top: 1vh;
+}
+.container .calendar_list_header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 10fr 2fr;
+  -moz-column-gap: 0.5vw;
+       column-gap: 0.5vw;
+  text-align: center;
+}
+.container .calendar_list_fields {
+  display: grid;
+  overflow: auto;
+}
+.container .right_nav {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  margin-top: 7vh;
+}
+.container .right_nav_links {
+  height: 20vh;
+}
+.container .right_nav_schedule {
+  height: 40vh;
+}
+
+.footer {
+  height: 3vh;
+  text-align: center;
+}/*# sourceMappingURL=index.css.map */

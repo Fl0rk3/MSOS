@@ -1,0 +1,101 @@
+body
+    display: flex
+    flex-direction: column
+
+.nav
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    height: 5vh
+    background: #1a1a1a
+    padding: 0 1vw
+
+    &_bar
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        width: 35vh
+
+        &_field
+            background: white
+            display: flex
+            align-items: center
+
+            a
+                display: block
+                color: black
+                padding: 0 1.5vw
+                height: 5vh
+                line-height: 5vh
+
+    #time
+        font-size: 0.8vw
+
+.container
+    display: flex
+    flex-direction: row
+    height: 91.5vh
+    width: 100vw
+
+    .calendar
+        display: flex
+        flex-direction: column
+        width: 76vw
+        margin: 2vh 2vw
+        padding: 1vh 1vw
+
+        &_nav
+            width: 76vw
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+
+            &_title
+                background: white
+                color: black
+                width: 15vw
+                padding: 0.5vh 0.5vw
+                text-align: center
+
+            &_bar
+
+                &_field
+                    color: black
+                    background: white
+                    padding: 0.5vh 0.5vw
+                    cursor: pointer
+
+        &_list
+            display: flex
+            flex-direction: column
+            border: 0.3vw solid white
+            border-radius: 0 0 2% 2%
+            height: 80vh
+            padding-top: 1vh
+
+            &_header
+                display: grid
+                grid-template-columns: 1fr 2fr 10fr 2fr
+                column-gap: 0.5vw
+                text-align: center
+
+            &_fields
+                display: grid
+                overflow: auto
+
+    .right_nav
+        display: flex
+        flex-direction: column
+        width: 20vw
+        margin-top: 7vh
+
+        &_links
+            height: 20vh
+        &_schedule
+            height: 40vh
+
+.footer
+    height: 3vh
+    text-align: center
