@@ -1,9 +1,7 @@
 <?php
 session_start();
-
-require_once("./php/queries/SubjectQuery.php");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +31,11 @@ require_once("./php/queries/SubjectQuery.php");
     <div class="container">
         <div class="calendar">
             <div class="calendar_nav">
-                <div class="calendar_nav_title">Ważne terminy:</div>
+                <div class="calendar_nav_header">
+                    <div class="calendar_nav_header_field" id="homework">Domowe</div>
+                    <div class="calendar_nav_header_field" id="exams">Kolokwia</div>
+                    <div class="calendar_nav_header_field" id="notes">Notatki</div>
+                </div>
 
                 <div class="calendar_nav_bar">
                     <div class="calendar_nav_bar_field">Dodaj</div>

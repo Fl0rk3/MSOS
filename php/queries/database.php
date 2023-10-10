@@ -1,6 +1,6 @@
 <?php
 
-include('config.php');
+include(__DIR__ . '/config.php');
 
 class Database extends PDO
 {
@@ -16,8 +16,8 @@ class Database extends PDO
         parent::__construct("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
 
         try {
-            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }

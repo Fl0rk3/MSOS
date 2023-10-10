@@ -54,11 +54,16 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
-.container .calendar_nav_title {
+.container .calendar_nav_header {
+  display: flex;
+  flex-direction: row;
+}
+.container .calendar_nav_header_field {
   background: white;
   color: black;
-  width: 15vw;
-  padding: 0.5vh 0.5vw;
+  width: 10vw;
+  padding: 0.5vh 0.2vw;
+  margin: 0 0.1vw 0 0;
   text-align: center;
 }
 .container .calendar_nav_bar_field {
