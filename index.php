@@ -1,5 +1,12 @@
 <?php
+include('./php/Login.php');
+
 session_start();
+
+if (!isset($_SESSION['is_logged'])) {
+    header("Location: ./sites/home.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +15,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSOS</title>
+    <title>MSOS - panel studenta</title>
 
     <link rel="stylesheet" href="./sass/layout.css">
     <link rel="stylesheet" href="./sass/index.css">
@@ -56,6 +63,12 @@ session_start();
         </div>
 
         <div class="right_nav">
+            <div class="right_nav_user">
+                <?php
+                echo 'Zalogowano: ' . $_SESSION['userData']->getUsername() . '<br/>';
+                ?>
+                <a href="./php/scrapers/logout.php" id="logout">Wyloguj się</a>
+            </div>
             <div class="right_nav_links">
                 <div class="right_nav_links_title">Przydatne linki:</div>
 
