@@ -11,6 +11,21 @@
   border-radius: 10%;
   width: 25vw;
   height: 25vh;
+  overflow: hidden;
+}
+.loginBox_selector {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+}
+.loginBox_selector #selected {
+  background: white;
+  color: black;
+}
+.loginBox_selector_field {
+  width: 50%;
+  text-align: center;
+  padding: 1vh 0;
 }
 .loginBox_form {
   height: 100%;
@@ -20,4 +35,7 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
+}
+.loginBox #loginBox_register {
+  display: none;
 }/*# sourceMappingURL=home.css.map */
