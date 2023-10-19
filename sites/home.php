@@ -41,6 +41,11 @@ session_start();
                 <input type="password" name="password" id="password_reg" placeholder="Hasło">
                 <input type="password" name="password_repeat" id="password_repeat" placeholder="Powtórz hasło">
                 <input type="submit" value="Zarejestruj">
+                <?php
+                if (isset($_SESSION['errorRegister'])) {
+                    echo "<span id='error'>" . $_SESSION['errorRegister'] . "</span>";
+                }
+                ?>
             </form>
         </div>
     </div>
@@ -49,4 +54,5 @@ session_start();
 </html>
 <?php
 unset($_SESSION['errorLogin']);
+unset($_SESSION['errorRegister']);
 ?>
