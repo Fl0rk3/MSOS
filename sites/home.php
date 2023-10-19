@@ -20,13 +20,13 @@ session_start();
     <div class="header">MSOS</div>
     <div class="loginBox">
         <div class="loginBox_selector">
-            <div class="loginBox_selector_field loginBox_selector_field_login" id="selected">Zaloguj</div>
-            <div class="loginBox_selector_field loginBox_selector_field_register">Zarejestruj</div>
+            <div class="loginBox_selector_field loginBox_selector_field_login selected" id="login_button">Zaloguj</div>
+            <div class="loginBox_selector_field loginBox_selector_field_register" id="register_button">Zarejestruj</div>
         </div>
-        <div class="loginBox_form" id="loginBox_login">
+        <div class="loginBox_form loginBox_selected" id="loginBox_login">
             <form action="../php/scrapers/loginScraper.php" method="post">
-                <label>Login: <input type="text" name="login" id="login"></label>
-                <label>Hasło: <input type="password" name="password" id="password"></label>
+                <input type="text" name="login" id="login" placeholder="Nazwa użytkownika">
+                <input type="password" name="password" id="password" placeholder="Hasło">
                 <input type="submit" value="Zaloguj">
                 <?php
                 if (isset($_SESSION['errorLogin'])) {
@@ -37,9 +37,9 @@ session_start();
         </div>
         <div class="loginBox_form" id="loginBox_register">
             <form action="../php/scrapers/registerScraper.php" method="post">
-                <label>Login: <input type="text" name="login" id="login_reg"></label>
-                <label>Hasło: <input type="password" name="password" id="password_reg"></label>
-                <label>Powtórz hasło: <input type="password" name="password_repeat" id="password_repeat"></label>
+                <input type="text" name="login" id="login_reg" placeholder="Nazwa Użytkownika">
+                <input type="password" name="password" id="password_reg" placeholder="Hasło">
+                <input type="password" name="password_repeat" id="password_repeat" placeholder="Powtórz hasło">
                 <input type="submit" value="Zarejestruj">
             </form>
         </div>
@@ -47,3 +47,6 @@ session_start();
 </body>
 
 </html>
+<?php
+unset($_SESSION['errorLogin']);
+?>
