@@ -13,6 +13,11 @@ class Login
         $this->is_admin = $is_admin;
     }
 
+    public function getUserID()
+    {
+        return $this->user_id;
+    }
+
     public function getUsername()
     {
         return $this->username;

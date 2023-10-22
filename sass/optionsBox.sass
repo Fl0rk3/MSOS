@@ -1,3 +1,23 @@
+.alerts_display
+    position: absolute
+    top: 7vh
+    right: 1vw
+    display: flex
+    flex-direction: column-reverse
+    gap: 1vh
+
+    .alertBox
+        width: 10vw
+        padding: 0.6vh 0.6vw
+        font-size: 0.8vw
+        border-radius: 1vh
+
+    .alertBox_success
+        background: rgba(102, 255, 153, 0.63)
+
+    .alertBox_error
+        background: rgba(255, 53, 94, 0.63)
+
 .option_window
     position: absolute
     width: 100vw
@@ -35,36 +55,29 @@
         &_header
             font-size: 1.5vw
 
-        form
-            display: flex
-            height: 60%
-            flex-direction: column
-            justify-content: space-evenly
-            align-items: center
+        #addLink_name, #addLink_link
+            border: 0
+            border-bottom: 0.2vh solid white
+            margin-left: 0.5vw
+            color: white
+            background: #1e1e1e
+            height: 2vh
+            font-size: 1.1vw
+            width: 17vw
 
-            #addLink_name, #addLink_link
-                border: 0
-                border-bottom: 0.2vh solid white
-                margin-left: 0.5vw
-                color: white
-                background: #1e1e1e
-                height: 2vh
-                font-size: 1.1vw
-                width: 17vw
+        #addLink_name:focus, #addLink_link:focus
+            outline: none
 
-            #addLink_name:focus, #addLink_link:focus
-                outline: none
-
-            input[type=submit]
-                height: 4vh
-                width: 15vw
-                font-size: 1.2vw
-                font-weight: 900
-                background: white
-                border: 0.3vh white solid
-                color: black
-                border-radius: 1vh
-                cursor: pointer
+        input[type=button]
+            height: 4vh
+            width: 15vw
+            font-size: 1.2vw
+            font-weight: 900
+            background: white
+            border: 0.3vh white solid
+            color: black
+            border-radius: 1vh
+            cursor: pointer
 
 .active_window
     display: block
