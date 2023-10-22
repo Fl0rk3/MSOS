@@ -19,11 +19,14 @@ if (!isset($_SESSION['is_logged'])) {
 
     <link rel="stylesheet" href="./sass/layout.css">
     <link rel="stylesheet" href="./sass/index.css">
+    <link rel="stylesheet" href="./sass/optionsBox.css">
 
     <script src="./javascript/timer.js"></script>
+    <script src="./javascript/optionsBox.js"></script>
+    <script src="https://kit.fontawesome.com/9eef710565.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload=display_time();>
+<body onload="display_time(); optionsBox();">
     <div class="nav">
         <div class="logo"><a href="#">MSOS</a></div>
 
@@ -64,26 +67,32 @@ if (!isset($_SESSION['is_logged'])) {
 
         <div class="right_nav">
             <div class="right_nav_user">
-                <?php
-                echo 'Zalogowano: ' . $_SESSION['userData']->getUsername() . '<br/>';
-                ?>
-                <a href="./php/scrapers/logout.php" id="logout">Wyloguj się</a>
-            </div>
-            <div class="right_nav_links">
-                <div class="right_nav_links_title">Przydatne linki:</div>
+                <div class="right_nav_user_name">
+                    <?php
+                    echo 'Użytkownik: ' . $_SESSION['userData']->getUsername() . '<br/>';
+                    ?>
+                </div>
 
-                <div class="right_nav_links_bar">
-                    <div class="right_nav_links_bar_field" id="usos">
-                        <a href="https://usosweb.wne.uw.edu.pl/" target="_blank">USOS</a>
-                    </div>
-                    <div class="right_nav_links_bar_field" id="moodle">
-                        <a href="https://elearning.wne.uw.edu.pl" target="_blank">Moodle</a>
-                    </div>
-                    <div class="right_nav_links_bar_field" id="kampus">
-                        <a href="https://kampus.come.uw.edu.pl" target="_blank">Kampus</a>
-                    </div>
+                <div class="right_nav_user_logout">
+                    <a href="./php/scrapers/logout.php" id="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </div>
             </div>
+
+            <hr class="right_nav_hr">
+
+            <div class="right_nav_links">
+                <div class="right_nav_links_main">
+                    <div class="right_nav_links_main_title">Przydatne linki</div>
+                    <div class="right_nav_links_main_add" id="addLink"><i class="fa-solid fa-plus"></i></div>
+                </div>
+
+                <div class="right_nav_links_bar">
+                    <?php
+                    ?>
+                </div>
+            </div>
+
+            <hr class="right_nav_hr">
 
             <div class="right_nav_schedule">
                 <div class="right_nav_schedule_title">Najbliższe zajęcia:</div>
@@ -93,6 +102,18 @@ if (!isset($_SESSION['is_logged'])) {
 
     <div class="footer">
         Florian Ficek &copy; 2023
+    </div>
+    <div class="option_window" id="option_window">
+        <div class="option_window_box option_window_addLink" id="addLink_box">
+            <div class="option_window_box_close" id="addLink_close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="option_window_addLink_header">Dodawanie linka</div>
+
+            <form action="" method="post">
+                <input type="text" name="addLink_name" id="addLink_name" placeholder="Nazwa Url">
+                <input type="text" name="addLink_link" id="addLink_link" placeholder="Url">
+                <input type="submit" value="Dodaj">
+            </form>
+        </div>
     </div>
 </body>
 

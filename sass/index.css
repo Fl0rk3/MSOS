@@ -97,8 +97,27 @@ body {
   width: 20vw;
   margin-top: 7vh;
 }
+.container .right_nav_hr {
+  width: 16vw;
+  margin: 2vh 0;
+}
+.container .right_nav_user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 2vw;
+}
 .container .right_nav_links {
   height: 20vh;
+}
+.container .right_nav_links_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 2vw;
+}
+.container .right_nav_links_main_add {
+  cursor: pointer;
 }
 .container .right_nav_schedule {
   height: 40vh;

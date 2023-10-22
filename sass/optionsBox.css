@@ -1,0 +1,76 @@
+.option_window {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+.option_window_box_close {
+  position: absolute;
+  right: 0.7vw;
+  top: 0.7vh;
+  cursor: pointer;
+}
+.option_window_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: #1e1e1e;
+  border: 0.4vh solid white;
+  border-radius: 1vh;
+  display: flex;
+  flex-direction: column;
+}
+.option_window_addLink {
+  height: 25vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+}
+.option_window_addLink_header {
+  font-size: 1.5vw;
+}
+.option_window_addLink form {
+  display: flex;
+  height: 60%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.option_window_addLink form #addLink_name, .option_window_addLink form #addLink_link {
+  border: 0;
+  border-bottom: 0.2vh solid white;
+  margin-left: 0.5vw;
+  color: white;
+  background: #1e1e1e;
+  height: 2vh;
+  font-size: 1.1vw;
+  width: 17vw;
+}
+.option_window_addLink form #addLink_name:focus, .option_window_addLink form #addLink_link:focus {
+  outline: none;
+}
+.option_window_addLink form input[type=submit] {
+  height: 4vh;
+  width: 15vw;
+  font-size: 1.2vw;
+  font-weight: 900;
+  background: white;
+  border: 0.3vh white solid;
+  color: black;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+
+.active_window {
+  display: block;
+}
+
+.active_box {
+  display: flex;
+}/*# sourceMappingURL=optionsBox.css.map */
