@@ -1,3 +1,24 @@
+.alerts_display {
+  position: absolute;
+  top: 7vh;
+  right: 1vw;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1vh;
+}
+.alerts_display .alertBox {
+  width: 10vw;
+  padding: 0.6vh 0.6vw;
+  font-size: 0.8vw;
+  border-radius: 1vh;
+}
+.alerts_display .alertBox_success {
+  background: rgba(102, 255, 153, 0.63);
+}
+.alerts_display .alertBox_error {
+  background: rgba(255, 53, 94, 0.63);
+}
+
 .option_window {
   position: absolute;
   width: 100vw;
@@ -35,14 +56,7 @@
 .option_window_addLink_header {
   font-size: 1.5vw;
 }
-.option_window_addLink form {
-  display: flex;
-  height: 60%;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.option_window_addLink form #addLink_name, .option_window_addLink form #addLink_link {
+.option_window_addLink #addLink_name, .option_window_addLink #addLink_link {
   border: 0;
   border-bottom: 0.2vh solid white;
   margin-left: 0.5vw;
@@ -52,10 +66,10 @@
   font-size: 1.1vw;
   width: 17vw;
 }
-.option_window_addLink form #addLink_name:focus, .option_window_addLink form #addLink_link:focus {
+.option_window_addLink #addLink_name:focus, .option_window_addLink #addLink_link:focus {
   outline: none;
 }
-.option_window_addLink form input[type=submit] {
+.option_window_addLink input[type=button] {
   height: 4vh;
   width: 15vw;
   font-size: 1.2vw;

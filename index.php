@@ -108,13 +108,15 @@ if (!isset($_SESSION['is_logged'])) {
             <div class="option_window_box_close" id="addLink_close"><i class="fa-solid fa-xmark"></i></div>
             <div class="option_window_addLink_header">Dodawanie linka</div>
 
-            <form action="" method="post">
-                <input type="text" name="addLink_name" id="addLink_name" placeholder="Nazwa Url">
-                <input type="text" name="addLink_link" id="addLink_link" placeholder="Url">
-                <input type="submit" value="Dodaj">
-            </form>
+            <input type="text" name="addLink_name" id="addLink_name" placeholder="Nazwa Url">
+            <input type="text" name="addLink_link" id="addLink_link" placeholder="Url">
+            <input type="button" value="Dodaj" id="addLink_button">
         </div>
     </div>
+
+    <div class="alerts_display" id="alerts_display"></div>
+
+    <script src="./ajax/linksajax.js"></script>
 </body>
 
 </html>
