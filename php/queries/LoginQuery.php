@@ -11,7 +11,7 @@ class LoginQuery
         $this->db = new Database();
     }
 
-    public function isUserExist($username)
+    public function isUserExist($username): bool
     {
         $statement = $this->db->prepare("SELECT user_id, username, is_admin FROM msos.users WHERE username=:username");
         $statement->execute(array(':username' => $username));
@@ -23,7 +23,7 @@ class LoginQuery
         return false;
     }
 
-    public function loginUser($username, $password)
+    public function loginUser($username, $password): array|null
     {
         $statement = $this->db->prepare("SELECT user_id, username, password, is_admin FROM msos.users WHERE username=:username");
         $statement->execute(array(':username' => $username));

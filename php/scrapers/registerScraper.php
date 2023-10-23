@@ -5,9 +5,9 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 $password_repeat = $_POST['password_repeat'];
 
-include('./../queries/LoginQuery.php');
-include('./../queries/RegisterQuery.php');
-include('./../Login.php');
+include_once('./../queries/LoginQuery.php');
+include_once('./../queries/RegisterQuery.php');
+include_once('./../Login.php');
 
 $LQ = new LoginQuery();
 
