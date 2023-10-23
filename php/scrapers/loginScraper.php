@@ -4,8 +4,8 @@ session_start();
 $login = $_POST['login'];
 $password = $_POST['password'];
 
-include('./../queries/LoginQuery.php');
-include('./../Login.php');
+include_once('./../queries/LoginQuery.php');
+include_once('./../Login.php');
 
 $loginQuery = new LoginQuery();
 $checkUser = $loginQuery->loginUser($login, $password);

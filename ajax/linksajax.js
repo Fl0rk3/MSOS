@@ -15,7 +15,8 @@ document.getElementById('addLink_button').addEventListener('click', function () 
 
         const alertBox = document.createElement("div");
         alertBox.classList.add('alertBox');
-        if(xhr.responseText){
+        phpResponse = JSON.parse(xhr.response)
+        if(phpResponse[0]){
             alertBox.classList.add('alertBox_success');
             alertBox.innerHTML = "Dodano nowy link."
         }else{
@@ -24,6 +25,8 @@ document.getElementById('addLink_button').addEventListener('click', function () 
         }
         const displayBox = document.getElementById('alerts_display');
         displayBox.appendChild(alertBox)
+
+        document.getElementById('right_nav_links_bar').innerHTML = phpResponse[1];
 
         setTimeout(() =>{
             displayBox.removeChild(alertBox)

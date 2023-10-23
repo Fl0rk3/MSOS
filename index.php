@@ -1,5 +1,5 @@
 <?php
-include('./php/Login.php');
+include_once('./php/Login.php');
 
 session_start();
 
@@ -86,8 +86,9 @@ if (!isset($_SESSION['is_logged'])) {
                     <div class="right_nav_links_main_add" id="addLink"><i class="fa-solid fa-plus"></i></div>
                 </div>
 
-                <div class="right_nav_links_bar">
+                <div class="right_nav_links_bar" id="right_nav_links_bar">
                     <?php
+                    echo $_SESSION['userData']->getLinks()->getLinksToHTML($_SESSION['userData']->getUserLinks());
                     ?>
                 </div>
             </div>
