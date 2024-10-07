@@ -1,6 +1,9 @@
 body {
   display: flex;
   flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .nav {
@@ -117,6 +120,15 @@ body {
   margin-right: 2vw;
 }
 .container .right_nav_links_main_add {
+  cursor: pointer;
+}
+.container .right_nav_links_bar_link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 2vw;
+}
+.container .right_nav_links_bar_link_delete {
   cursor: pointer;
 }
 .container .right_nav_schedule {

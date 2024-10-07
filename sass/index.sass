@@ -1,6 +1,7 @@
 body
     display: flex
     flex-direction: column
+    user-select: none
 
 .nav
     display: flex
@@ -117,6 +118,16 @@ body
 
                 &_add
                     cursor: pointer
+
+            &_bar
+                &_link
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    margin-right: 2vw
+
+                    &_delete
+                        cursor: pointer
 
         &_schedule
             height: 40vh
