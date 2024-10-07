@@ -12,7 +12,6 @@ $url = $_POST['url'];
 $linkQuery = new LinkQuery();
 $links = new Links();
 
-
 try {
     $result = $linkQuery->addLink($user_id, $urlName, $url);
     $_SESSION['userData']->reloadLinks();
