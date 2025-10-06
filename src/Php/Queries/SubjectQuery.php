@@ -3,7 +3,7 @@
 namespace MSOS\Php\Queries;
 
 use MSOS\Config\Database;
-use Msos\Php\Subject;
+use MSOS\Php\Subject;
 use PDO;
 
 class SubjectQuery
