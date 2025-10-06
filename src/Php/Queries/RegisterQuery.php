@@ -13,7 +13,7 @@ class RegisterQuery
         $this->db = new Database();
     }
 
-    public function registerUser($username, $password): array|null
+    public function registerUser(string $username, string $password): array|null
     {
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
         $statement = $this->db->prepare("INSERT INTO msos.users (username, password, is_admin) VALUES (:username, :password, 0)");

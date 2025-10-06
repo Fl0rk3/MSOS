@@ -4,6 +4,9 @@ namespace MSOS\Php\OptionsBox;
 
 class Links
 {
+    /**
+     * @param array<int, array<string, mixed>> $links
+     */
     function getLinksToHTML(array $links): string
     {
         $htmlResult = "";

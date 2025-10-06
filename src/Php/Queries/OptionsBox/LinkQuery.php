@@ -46,6 +46,7 @@ class LinkQuery
         return false;
     }
 
+    /** @return array<int, array<string, mixed>> */
     function getUserLinks(int $user_id): array
     {
         $statement = $this->db->prepare("SELECT link_id, name, url FROM msos.links WHERE user_id = :user_id");

@@ -27,16 +27,17 @@ class SubjectQuery
         return new Subject($subject_id, $name);
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     function getSubjectsList()
     {
         $statement = $this->db->prepare("SELECT * FROM msos.subjects");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function addSubject($name)
+    function addSubject(string $name): void
     {
         $statement = $this->db->prepare("SELECT * FROM msos.subjects WHERE name=:name");
         $statement->execute(array(':name' => $name));

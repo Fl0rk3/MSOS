@@ -13,7 +13,7 @@ class Login
     private Links $Links;
     private array $user_links;
 
-    function __construct($user_id, $username, $is_admin)
+    function __construct(int $user_id, string $username, int $is_admin)
     {
         $this->user_id = $user_id;
         $this->username = $username;
