@@ -1,0 +1,4 @@
+/vendor/
+/src/config/config.php/
+/composer.lock
+/phpstan.neon
