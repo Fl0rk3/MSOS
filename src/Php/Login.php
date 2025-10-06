@@ -11,6 +11,9 @@ class Login
     private string $username;
     private int $is_admin;
     private Links $Links;
+    /**
+     * @var array<int, array<string, mixed>>
+     */
     private array $user_links;
 
     function __construct(int $user_id, string $username, int $is_admin)
@@ -47,6 +50,9 @@ class Login
         return $this->Links;
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getUserLinks(): array
     {
         return $this->user_links;

@@ -26,6 +26,9 @@ class LoginQuery
         return false;
     }
 
+    /**
+     * @return array<int, array<string, string|int>>|null
+     */
     public function loginUser(string $username, string $password): array|null
     {
         $statement = $this->db->prepare("SELECT user_id, username, password, is_admin FROM msos.users WHERE username=:username");

@@ -4,8 +4,8 @@ namespace MSOS\Php;
 
 class Subject
 {
-    private $subject_id;
-    public $name;
+    private int $subject_id;
+    public string $name;
 
     public function __construct($subject_id, $name)
     {
@@ -13,7 +13,7 @@ class Subject
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
