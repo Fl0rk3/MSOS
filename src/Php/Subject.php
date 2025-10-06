@@ -1,6 +1,7 @@
 <?php
 
-namespace php;
+namespace MSOS\Php;
+
 class Subject
 {
     private $subject_id;

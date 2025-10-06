@@ -3,8 +3,8 @@
 namespace MSOS\Php\Scrapers;
 
 use MSOS\Php\Login;
-use MSOS\App\Php\Queries\LoginQuery;
-use MSOS\App\Php\Queries\RegisterQuery;
+use MSOS\Php\Queries\LoginQuery;
+use MSOS\Php\Queries\RegisterQuery;
 
 session_start();
 

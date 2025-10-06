@@ -1,12 +1,10 @@
 <?php
 
-namespace Msos\Php\queries;
+namespace MSOS\Php\Queries;
 
-use Database;
+use MSOS\Config\Database;
 use Msos\Php\Subject;
-
-require_once(__DIR__ . '/database.Php');
-require_once(__DIR__ . '/../Subject.php');
+use PDO;
 
 class SubjectQuery
 {

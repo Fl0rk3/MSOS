@@ -1,9 +1,8 @@
 <?php
 
-namespace Msos\Php\queries;
-use Database;
+namespace MSOS\Php\Queries;
+use MSOS\Config\Database;
 
-require_once(__DIR__ . '/database.Php');
 
 class RegisterQuery
 {
