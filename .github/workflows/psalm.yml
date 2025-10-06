@@ -4,11 +4,18 @@ on: [push]
 
 jobs:
   psalm:
-    name: Psalm
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Workaround: run a tiny throwaway container just to mark the mount as safe for git
+      - name: Mark /github/workspace safe inside a container
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/github/workspace" \
+            -w /github/workspace \
+            alpine/git sh -c "git config --global --add safe.directory /github/workspace && git status >/dev/null"
 
       - name: Psalm
         uses: docker://ghcr.io/psalm/psalm-github-actions
