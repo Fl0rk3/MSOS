@@ -1,4 +1,4 @@
-name: CI
+name: PHPStan + psalm Static Analysis
 
 on: [push]
 
@@ -6,10 +6,25 @@ jobs:
   phpstan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: PHPStan Static Analysis
-        uses: php-actions/phpstan@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          path: src/
+          php-version: '8.2'
+          coverage: none
+          tools: composer
+
+      - name: Cache Composer deps
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse src --level=max --error-format=github
