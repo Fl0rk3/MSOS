@@ -1,0 +1,33 @@
+<?php
+
+namespace MSOS\backend\Scrapers;
+
+use Doctrine\ORM\EntityManagerInterface;
+use MSOS\backend\Queries\LoginQuery;
+
+session_start();
+
+$login = $_POST['login'];
+$password = $_POST['password'];
+
+/** @var EntityManagerInterface $em */
+$em = require __DIR__ . '/../../Config/bootstrap.php';
+
+$loginQuery = new LoginQuery($em);
+$userData = $loginQuery->loginUser($login, $password);
+
+if ($userData !== null) {
+    $_SESSION['userData'] = [
+        'id' => $userData['user_id'],
+        'username' => $userData['username'],
+        'is_admin' => $userData['is_admin']
+    ];
+    $_SESSION['is_logged'] = true;
+    header('Location: ./../../../public/index.php');
+    exit;
+}
+
+$_SESSION['errorLogin'] = "Błędne dane logowania.";
+header('Location: ./../../../public/Sites/home.php');
+exit;
+

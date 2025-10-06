@@ -24,7 +24,7 @@ session_start();
             <div class="loginBox_selector_field loginBox_selector_field_register" id="register_button">Zarejestruj</div>
         </div>
         <div class="loginBox_form loginBox_selected" id="loginBox_login">
-            <form action="../../src/Php/Scrapers/loginScraper.php" method="post">
+            <form action="../../src/backend/Scrapers/loginScraper.php" method="post">
                 <input type="text" name="login" id="login" placeholder="Nazwa użytkownika">
                 <input type="password" name="password" id="password" placeholder="Hasło">
                 <input type="submit" value="Zaloguj">
@@ -36,7 +36,7 @@ session_start();
             </form>
         </div>
         <div class="loginBox_form" id="loginBox_register">
-            <form action="../../src/Php/Scrapers/registerScraper.php" method="post">
+            <form action="../../src/backend/Scrapers/registerScraper.php" method="post">
                 <input type="text" name="login" id="login_reg" placeholder="Nazwa Użytkownika">
                 <input type="password" name="password" id="password_reg" placeholder="Hasło">
                 <input type="password" name="password_repeat" id="password_repeat" placeholder="Powtórz hasło">

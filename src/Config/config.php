@@ -1,5 +1,5 @@
 <?php
-define('DBUSER', 'root');
-define('DBPWD', '');
-define('DBHOST', 'localhost');
-define('DBNAME', 'msos');
+const DBUSER = 'root';
+const DBPWD = '';
+const DBHOST = 'localhost';
+const DBNAME = 'msos';

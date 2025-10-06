@@ -1,6 +1,6 @@
 <?php
 
-namespace MSOS\Php\OptionsBox;
+namespace MSOS\backend\OptionsBox;
 
 class Links
 {
