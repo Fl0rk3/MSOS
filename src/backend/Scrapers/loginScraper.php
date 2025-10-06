@@ -10,10 +10,18 @@ session_start();
 $login = $_POST['login'];
 $password = $_POST['password'];
 
+if (!is_string($login) || !is_string($password)) {
+    $_SESSION['errorLogin'] = "Błąd danych.";
+    header('Location: ./../../../public/Sites/home.php');
+    exit;
+}
+
 /** @var EntityManagerInterface $em */
 $em = require __DIR__ . '/../../Config/bootstrap.php';
 
 $loginQuery = new LoginQuery($em);
+
+/** @var array{id:int, username:string, is_admin:bool}|null $userData */
 $userData = $loginQuery->loginUser($login, $password);
 
 if ($userData !== null) {

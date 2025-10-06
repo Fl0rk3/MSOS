@@ -14,7 +14,7 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
-    private int $user_id;
+    private ?int $user_id = null;
 
     #[ORM\Column(type: Types::STRING, length: 40, unique: true, nullable: false)]
     private string $username;
@@ -61,7 +61,7 @@ class User
     }
 
     /**
-     * @return array
+     * @return array{user_id:int, username:string, is_admin:int}
      */
     public function toArray(): array
     {

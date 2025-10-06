@@ -33,6 +33,9 @@ class LinkQuery
         }
 
         $userRef = $this->em->getReference(User::class, $user_id);
+        if ($userRef === null) {
+            return false;
+        }
         $link = new Link($userRef, $name, $url);
         $this->em->persist($link);
         $this->em->flush();

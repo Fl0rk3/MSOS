@@ -10,6 +10,7 @@ use MSOS\backend\Queries\OptionsBox\LinkQuery;
 
 session_start();
 
+/** @var array{id:int, username:string, is_admin:bool}|null $user */
 $user = $_SESSION['userData'] ?? null;
 
 if (!$user) {

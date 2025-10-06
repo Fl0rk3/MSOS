@@ -6,6 +6,10 @@ namespace MSOS\backend\ctrl;
 
 final class LinksRenderer
 {
+
+    /**
+     * @param array<int, array{name:string, url:string}> $links
+     */
     public static function toHtml(array $links): string
     {
         $out = '';

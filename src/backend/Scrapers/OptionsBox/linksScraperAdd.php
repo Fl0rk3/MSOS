@@ -10,6 +10,7 @@ use MSOS\backend\Queries\OptionsBox\LinkQuery;
 
 session_start();
 
+/** @var array{id:int, username:string, is_admin:bool}|null $user */
 $user = $_SESSION['userData'] ?? null;
 
 if (!$user) {
@@ -19,8 +20,17 @@ if (!$user) {
 }
 
 $user_id = $user['id'];
-$urlName = trim((string)$_POST['urlName']);
-$url = trim((string)$_POST['url']);
+$rawName = $_POST['urlName'] ?? null;
+$rawUrl = $_POST['url'] ?? null;
+
+if (!is_string($rawName) || !is_string($rawUrl)) {
+    http_response_code(422);
+    echo json_encode(['success' => false, 'html' => '']);
+    exit;
+}
+
+$urlName = trim($rawName);
+$url = trim($rawUrl);
 
 /** @var EntityManagerInterface $em */
 $em = require __DIR__ . '/../../../Config/bootstrap.php';

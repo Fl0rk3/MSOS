@@ -12,6 +12,12 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 $password_repeat = $_POST['password_repeat'];
 
+if (!is_string($login) || !is_string($password) || !is_string($password_repeat)) {
+    $_SESSION['errorLogin'] = "Błąd danych.";
+    header('Location: ./../../../public/Sites/home.php');
+    exit;
+}
+
 
 if ($password != $password_repeat) {
     $_SESSION['errorRegister'] = 'Hasła nie są takie same.';

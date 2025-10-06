@@ -13,6 +13,9 @@ class RegisterQuery
     {
     }
 
+    /**
+     * @return array{user_id:int, username:string, is_admin:bool}|null
+     */
     public function registerUser(string $username, string $password): array|null
     {
         $username = trim($username);
@@ -26,7 +29,7 @@ class RegisterQuery
 
         $user = new User($username);
         $user->setPassword($hash);
-        $user->setIsAdmin(false);
+        $user->setIsAdmin(0);
 
         $this->em->persist($user);
         $this->em->flush();
