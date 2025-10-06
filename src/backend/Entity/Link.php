@@ -38,7 +38,7 @@ class Link
         $this->url = $url;
     }
 
-    public function getLinkId(): int
+    public function getLinkId(): ?int
     {
         return $this->link_id;
     }

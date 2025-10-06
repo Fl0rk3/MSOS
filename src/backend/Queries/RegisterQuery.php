@@ -14,7 +14,7 @@ class RegisterQuery
     }
 
     /**
-     * @return array{user_id:int, username:string, is_admin:bool}|null
+     * @return array{user_id:int, username:string, is_admin:int}|null
      */
     public function registerUser(string $username, string $password): array|null
     {

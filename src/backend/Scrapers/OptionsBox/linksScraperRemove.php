@@ -19,8 +19,14 @@ if (!$user) {
     exit;
 }
 
-$user_id = $_SESSION['userData']['id'];
+$user_id = $user['id'];
 $urlName = $_POST['urlName'];
+
+if (!is_string($urlName)) {
+    http_response_code(422);
+    echo json_encode(['success' => false, 'html' => '']);
+    exit;
+}
 
 /** @var EntityManagerInterface $em */
 $em = require __DIR__ . '/../../../Config/bootstrap.php';

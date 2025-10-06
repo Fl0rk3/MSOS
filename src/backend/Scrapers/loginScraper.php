@@ -21,7 +21,7 @@ $em = require __DIR__ . '/../../Config/bootstrap.php';
 
 $loginQuery = new LoginQuery($em);
 
-/** @var array{id:int, username:string, is_admin:bool}|null $userData */
+/** @var array{user_id:int, username:string, is_admin:bool}|null $userData */
 $userData = $loginQuery->loginUser($login, $password);
 
 if ($userData !== null) {

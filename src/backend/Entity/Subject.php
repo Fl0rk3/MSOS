@@ -16,14 +16,21 @@ class Subject
     #[ORM\Column(type: Types::INTEGER)]
     private ?int $subject_id = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(
+        name: 'user_id',
+        referencedColumnName: 'user_id',
+        nullable: false,
+        onDelete: 'CASCADE'
+    )]
+    private User $user;
+    
     #[ORM\Column(type: Types::STRING)]
     private string $name;
 
-    #[ORM\Column(type: Types::INTEGER)]
-    private ?int $user_id = null;
-
-    public function __construct(string $name)
+    public function __construct(User $user, string $name)
     {
+        $this->user = $user;
         $this->name = $name;
     }
 
@@ -42,9 +49,9 @@ class Subject
         $this->name = $name;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
 }

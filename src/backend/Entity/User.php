@@ -30,7 +30,7 @@ class User
         $this->username = $username;
     }
 
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->user_id;
     }
@@ -61,7 +61,7 @@ class User
     }
 
     /**
-     * @return array{user_id:int, username:string, is_admin:int}
+     * @return array{user_id:int|null, username:string, is_admin:int}
      */
     public function toArray(): array
     {

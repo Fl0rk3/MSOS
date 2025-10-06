@@ -19,7 +19,7 @@ class LoginQuery
     }
 
     /**
-     * @return array{user_id:int, username:string, is_admin:bool}|null
+     * @return array{user_id:int, username:string, is_admin:int}|null
      */
     public function loginUser(string $username, string $password): ?array
     {
