@@ -6,7 +6,7 @@ use MSOS\Config\Database;
 
 class RegisterQuery
 {
-    private $db;
+    private Database $db;
 
     function __construct()
     {

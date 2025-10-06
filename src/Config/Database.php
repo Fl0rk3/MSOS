@@ -10,10 +10,10 @@ require_once(__DIR__ . '/config.php');
 class Database extends PDO
 {
 
-    private $user = DBUSER;
-    private $password = DBPWD;
-    private $database = DBNAME;
-    private $host = DBHOST;
+    private string $user = DBUSER;
+    private string $password = DBPWD;
+    private string $database = DBNAME;
+    private string $host = DBHOST;
 
     public function __construct()
     {

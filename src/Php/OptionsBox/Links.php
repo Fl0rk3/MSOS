@@ -4,7 +4,7 @@ namespace MSOS\Php\OptionsBox;
 
 class Links
 {
-    function getLinksToHTML($links): string
+    function getLinksToHTML(array $links): string
     {
         $htmlResult = "";
 

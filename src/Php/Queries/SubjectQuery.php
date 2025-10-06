@@ -8,14 +8,14 @@ use PDO;
 
 class SubjectQuery
 {
-    private $db;
+    private Database $db;
 
     function __construct()
     {
         $this->db = new Database();
     }
 
-    function getSubject($name)
+    function getSubject(string $name): Subject
     {
         $statement = $this->db->prepare("SELECT * FROM msos.subjects WHERE name=:name");
         $statement->execute(array(':name' => $name));

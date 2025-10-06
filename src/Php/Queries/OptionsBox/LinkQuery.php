@@ -7,14 +7,14 @@ use PDO;
 
 class LinkQuery
 {
-    private $db;
+    private Database $db;
 
     function __construct()
     {
         $this->db = new Database();
     }
 
-    function addLink($user_id, $name, $url): bool
+    function addLink(int $user_id, string $name, string $url): bool
     {
         $userLinks = $this->getUserLinks($user_id);
 
@@ -30,7 +30,7 @@ class LinkQuery
         return true;
     }
 
-    function removeLink($user_id, $name): bool
+    function removeLink(int $user_id, string $name): bool
     {
         $userLinks = $this->getUserLinks($user_id);
 
@@ -46,7 +46,7 @@ class LinkQuery
         return false;
     }
 
-    function getUserLinks($user_id): array
+    function getUserLinks(int $user_id): array
     {
         $statement = $this->db->prepare("SELECT link_id, name, url FROM msos.links WHERE user_id = :user_id");
         $statement->execute(array(':user_id' => $user_id));

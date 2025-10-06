@@ -7,11 +7,11 @@ use MSOS\Php\Queries\OptionsBox\LinkQuery;
 
 class Login
 {
-    private $user_id;
-    private $username;
-    private $is_admin;
-    private $Links;
-    private $user_links;
+    private int $user_id;
+    private string $username;
+    private int $is_admin;
+    private Links $Links;
+    private array $user_links;
 
     function __construct($user_id, $username, $is_admin)
     {
@@ -30,6 +30,11 @@ class Login
     public function getUsername(): string
     {
         return $this->username;
+    }
+
+    public function getIsAdmin(): int
+    {
+        return $this->is_admin;
     }
 
     public function reloadLinks(): void
