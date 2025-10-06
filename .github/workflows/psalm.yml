@@ -1,21 +1,30 @@
-name: Psalm Static analysis
+name: PHPStan Static Analysis
 
 on: [push]
 
 jobs:
-  psalm:
+  phpstan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Mark /github/workspace safe inside a container
-        run: |
-          docker run --rm \
-            --entrypoint sh \
-            -v "$GITHUB_WORKSPACE:/github/workspace" \
-            -w /github/workspace \
-            alpine/git -c "git config --global --add safe.directory /github/workspace && git status >/dev/null"
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          tools: composer
 
-      - name: Psalm
-        uses: docker://ghcr.io/psalm/psalm-github-actions
+      - name: Cache Composer deps
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse src --level=max --error-format=github
