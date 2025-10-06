@@ -1,0 +1,19 @@
+{
+    "name": "msos/app",
+    "description": "Mobilny System Obslugi Studenta",
+    "autoload": {
+        "psr-4": {
+            "MSOS\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florian Ficek",
+            "email": "florke15@gmail.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*",
+      "phpstan/phpstan": "1.*"
+    }
+}
