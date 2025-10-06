@@ -29,7 +29,7 @@ class LoginQuery
     /**
      * @return array<int, array<string, string|int>>|null
      */
-    public function loginUser(string $username, string $password): array|null
+    public function loginUser(string $username, string $password): ?array
     {
         $statement = $this->db->prepare("SELECT user_id, username, password, is_admin FROM msos.users WHERE username=:username");
         $statement->execute(array(':username' => $username));
