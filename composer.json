@@ -15,5 +15,8 @@
     "require": {
       "ext-pdo": "*",
       "phpstan/phpstan": "1.*"
+    },
+    "require-dev": {
+        "vimeo/psalm": "*"
     }
 }
