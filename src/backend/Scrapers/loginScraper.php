@@ -11,7 +11,19 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 
 if (!is_string($login) || !is_string($password)) {
-    $_SESSION['errorLogin'] = "Błąd danych.";
+    $_SESSION['errorLogin'] = "Data error.";
+    header('Location: ./../../../public/Sites/home.php');
+    exit;
+}
+
+if ($login === '' || mb_strlen($login) > 40) {
+    $_SESSION['errorLogin'] = "Missing or too long username [max 40 characters].";
+    header('Location: ./../../../public/Sites/home.php');
+    exit;
+}
+
+if ($password === '' || mb_strlen($login) > 32) {
+    $_SESSION['errorLogin'] = "Missing or too long password [max 32 characters].";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
