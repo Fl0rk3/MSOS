@@ -3,8 +3,6 @@ document.getElementById('addLink_button').addEventListener('click', function () 
     urlName = document.getElementById('addLink_name').value;
     url = document.getElementById('addLink_link').value;
     sendValue = "urlName=" + urlName + "&url=" + url
-    document.getElementById('addLink_name').value = '';
-    document.getElementById('addLink_link').value = '';
 
     const xhr = new XMLHttpRequest();
 
@@ -22,6 +20,8 @@ document.getElementById('addLink_button').addEventListener('click', function () 
                 alertBox.classList.add('alertBox_success');
                 alertBox.innerHTML = phpResponse['message'];
                 document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
+                document.getElementById('addLink_name').value = '';
+                document.getElementById('addLink_link').value = '';
             } else {
                 alertBox.classList.add('alertBox_error');
                 alertBox.innerHTML = phpResponse['message'];
