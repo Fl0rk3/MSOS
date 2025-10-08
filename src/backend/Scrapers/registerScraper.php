@@ -13,33 +13,34 @@ $password = $_POST['password'];
 $password_repeat = $_POST['password_repeat'];
 
 if (!is_string($login) || !is_string($password) || !is_string($password_repeat)) {
-    $_SESSION['errorLogin'] = "Data error.";
+    $_SESSION['errorRegister'] = "Data error.";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
 if ($login === '' || mb_strlen($login) > 40) {
-    $_SESSION['errorLogin'] = "Missing or too long username [max 40 characters].";
+    $_SESSION['errorRegister'] = "Missing or too long username [max 40 characters].";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
 if ($password === '' || mb_strlen($login) > 32) {
-    $_SESSION['errorLogin'] = "Missing password [max 32 characters].";
+    $_SESSION['errorRegister'] = "Missing password [max 32 characters].";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
 if ($password_repeat === '') {
-    $_SESSION['errorLogin'] = "Missing repeat password.";
+    $_SESSION['errorRegister'] = "Missing repeat password.";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
 
-if ($password != $password_repeat) {
+if ($password !== $password_repeat) {
     $_SESSION['errorRegister'] = 'Passwords are not the same.';
-    header('Location: ./../../Sites/home.Php');
+    header('Location: ./../../../public/Sites/home.php');
+    exit;
 }
 
 /** @var EntityManagerInterface $em */

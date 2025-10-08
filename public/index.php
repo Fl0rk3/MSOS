@@ -34,7 +34,7 @@ $links = $linksProvider->forUser($user['id']);
 
 <body onload="display_time(); optionsBox();">
 <div class="nav">
-    <div class="logo"><a href="#">MSOS</a></div>
+    <div class="logo"><a href="#">MSOS v0.031_1</a></div>
 
     <div class="nav_bar">
         <div class="nav_bar_field"><a href="">Przedmioty</a></div>
