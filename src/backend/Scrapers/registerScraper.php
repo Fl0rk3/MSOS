@@ -18,14 +18,14 @@ if (!is_string($login) || !is_string($password) || !is_string($password_repeat))
     exit;
 }
 
-if ($login === '' || mb_strlen($login) > 40) {
-    $_SESSION['errorRegister'] = "Missing or too long username [max 40 characters].";
+if ($login === '' || mb_strlen($login) > 40 || mb_strlen($login) < 5) {
+    $_SESSION['errorRegister'] = "Missing or incorrect username length [5-40 characters].";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
-if ($password === '' || mb_strlen($login) > 32) {
-    $_SESSION['errorRegister'] = "Missing password [max 32 characters].";
+if ($password === '' || mb_strlen($login) > 32 || mb_strlen($password) < 8) {
+    $_SESSION['errorRegister'] = "Missing or incorrect password length [8-32 characters].";
     header('Location: ./../../../public/Sites/home.php');
     exit;
 }

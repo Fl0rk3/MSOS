@@ -25,8 +25,8 @@ session_start();
         </div>
         <div class="loginBox_form loginBox_selected" id="loginBox_login">
             <form action="../../src/backend/Scrapers/loginScraper.php" method="post">
-                <input type="text" name="login" id="login" placeholder="Username" required>
-                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="text" name="login" id="login" placeholder="Username" required maxlength="40">
+                <input type="password" name="password" id="password" placeholder="Password" required maxlength="32">
                 <input type="submit" value="Sign In">
                 <?php
                 if (isset($_SESSION['errorLogin'])) {
@@ -37,10 +37,12 @@ session_start();
         </div>
         <div class="loginBox_form" id="loginBox_register">
             <form action="../../src/backend/Scrapers/registerScraper.php" method="post">
-                <input type="text" name="login" id="login_reg" placeholder="Username" required>
-                <input type="password" name="password" id="password_reg" placeholder="Password" required>
+                <input type="text" name="login" id="login_reg" placeholder="Username" required minlength="5"
+                       maxlength="40">
+                <input type="password" name="password" id="password_reg" placeholder="Password" required minlength="8"
+                       maxlength="32">
                 <input type="password" name="password_repeat" id="password_repeat" placeholder="Repeat password"
-                       required>
+                       required minlength="8" maxlength="32">
                 <input type="submit" value="Sign Up">
                 <?php
                 if (isset($_SESSION['errorRegister'])) {
