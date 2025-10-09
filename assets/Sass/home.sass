@@ -1,92 +1,96 @@
 .loginBox
-    position: absolute
-    top: 50%
-    left: 50%
-    margin-right: -50%
-    transform: translate(-50%, -50%)
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-right: -50%
+  transform: translate(-50%, -50%)
+  display: flex
+  flex-direction: column
+  align-items: center
+  border: 0.4vh solid white
+  border-radius: 10%
+  width: 25vw
+  height: 28vh
+  overflow: hidden
+
+  &_selector
+    display: flex
+    width: 100%
+    cursor: pointer
+
+    &_field
+      width: 50%
+      text-align: center
+      padding: 1vh 0
+
+  .selected
+    background: white
+    color: black
+
+  &_form
+    height: 100%
+    display: none
+
+  &_form form
     display: flex
     flex-direction: column
+    height: 100%
+    justify-content: space-evenly
     align-items: center
-    border: 0.4vh solid white
-    border-radius: 10%
-    width: 25vw
-    height: 28vh
-    overflow: hidden
 
-    &_selector
-        display: flex
-        width: 100%
-        cursor: pointer
+  #loginBox_login
 
-        &_field
-            width: 50%
-            text-align: center
-            padding: 1vh 0
+    #login, #password
+      border: 0
+      border-bottom: 0.2vh solid white
+      margin-left: 0.5vw
+      color: white
+      background: #1e1e1e
+      height: 2vh
+      font-size: 1.1vw
+      width: 17vw
 
-    .selected
-        background: white
-        color: black
+    #login:focus, #password:focus
+      outline: none
 
-    &_form
-        height: 100%
-        display: none
+    input[type=submit]
+      height: 4vh
+      width: 15vw
+      font-size: 1.2vw
+      font-weight: 900
+      background: white
+      border: 0.3vh white solid
+      color: black
+      border-radius: 1vh
 
-    &_form form
-        display: flex
-        flex-direction: column
-        height: 100%
-        justify-content: space-evenly
-        align-items: center
+  #loginBox_register
 
-    #loginBox_login
+    #login_reg, #password_reg, #password_repeat
+      border: 0
+      border-bottom: 0.2vh solid white
+      margin-left: 0.5vw
+      color: white
+      background: #1e1e1e
+      height: 2vh
+      font-size: 1.1vw
+      width: 17vw
 
-        #login, #password
-            border: 0
-            border-bottom: 0.2vh solid white
-            margin-left: 0.5vw
-            color: white
-            background: #1e1e1e
-            height: 2vh
-            font-size: 1.1vw
-            width: 17vw
+    #login:focus, #password:focus
+      outline: none
 
-        #login:focus, #password:focus
-            outline: none
+    input[type=submit]
+      height: 4vh
+      width: 15vw
+      font-size: 1.2vw
+      font-weight: 900
+      background: white
+      border: 0.3vh white solid
+      color: black
+      border-radius: 1vh
 
-        input[type=submit]
-            height: 4vh
-            width: 15vw
-            font-size: 1.2vw
-            font-weight: 900
-            background: white
-            border: 0.3vh white solid
-            color: black
-            border-radius: 1vh
+  .loginBox_selected
+    display: block
 
-    #loginBox_register
-
-        #login_reg, #password_reg, #password_repeat
-            border: 0
-            border-bottom: 0.2vh solid white
-            margin-left: 0.5vw
-            color: white
-            background: #1e1e1e
-            height: 2vh
-            font-size: 1.1vw
-            width: 17vw
-
-        #login:focus, #password:focus
-            outline: none
-
-        input[type=submit]
-            height: 4vh
-            width: 15vw
-            font-size: 1.2vw
-            font-weight: 900
-            background: white
-            border: 0.3vh white solid
-            color: black
-            border-radius: 1vh
-
-    .loginBox_selected
-        display: block
+  #error
+    text-align: center
+    color: red

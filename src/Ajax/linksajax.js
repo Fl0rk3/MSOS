@@ -18,22 +18,23 @@ document.getElementById('addLink_button').addEventListener('click', function () 
             phpResponse = JSON.parse(xhr.response)
             if (phpResponse['success']) {
                 alertBox.classList.add('alertBox_success');
-                alertBox.innerHTML = "Dodano nowy link."
+                alertBox.innerHTML = phpResponse['message'];
+                document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
+                document.getElementById('addLink_name').value = '';
+                document.getElementById('addLink_link').value = '';
             } else {
                 alertBox.classList.add('alertBox_error');
-                alertBox.innerHTML = "Wystąpił błąd podczas dodawania nowego linka. Nazwa lub URL już istnieje."
+                alertBox.innerHTML = phpResponse['message'];
             }
             const displayBox = document.getElementById('alerts_display');
             displayBox.appendChild(alertBox)
-            
-            document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
 
             setTimeout(() => {
                 displayBox.removeChild(alertBox)
             }, 5000);
         } else {
             alertBox.classList.add('alertBox_error');
-            alertBox.innerHTML = "Wystąpił błąd podczas dodawania nowego linka."
+            alertBox.innerHTML = "Connection error. Please try again."
         }
     };
 
@@ -56,22 +57,21 @@ function deleteLink(linkName) {
             phpResponse = JSON.parse(xhr.response)
             if (phpResponse['success']) {
                 alertBox.classList.add('alertBox_success');
-                alertBox.innerHTML = "Usunięto link o nazwie " + linkName + "."
+                alertBox.innerHTML = phpResponse['message']
+                document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
             } else {
                 alertBox.classList.add('alertBox_error');
-                alertBox.innerHTML = "Wystąpił błąd podczas usuwania linka. Link nie istnieje."
+                alertBox.innerHTML = phpResponse['message']
             }
             const displayBox = document.getElementById('alerts_display');
             displayBox.appendChild(alertBox)
-
-            document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
 
             setTimeout(() => {
                 displayBox.removeChild(alertBox)
             }, 5000);
         } else {
             alertBox.classList.add('alertBox_error');
-            alertBox.innerHTML = "Wystąpił błąd podczas usuwania linka."
+            alertBox.innerHTML = "Connection error. Please try again."
         }
     };
 

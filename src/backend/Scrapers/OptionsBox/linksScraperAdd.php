@@ -14,8 +14,7 @@ session_start();
 $user = $_SESSION['userData'] ?? null;
 
 if (!$user) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'html' => '']);
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'User error.']);
     exit;
 }
 
@@ -24,13 +23,17 @@ $rawName = $_POST['urlName'] ?? null;
 $rawUrl = $_POST['url'] ?? null;
 
 if (!is_string($rawName) || !is_string($rawUrl)) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'html' => '']);
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'Invalid parameters.']);
     exit;
 }
 
 $urlName = trim($rawName);
 $url = trim($rawUrl);
+
+if ($urlName === '' || $url === '') {
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'Name and URL cannot be empty.']);
+    exit;
+}
 
 /** @var EntityManagerInterface $em */
 $em = require __DIR__ . '/../../../Config/bootstrap.php';
@@ -42,9 +45,9 @@ try {
         $linksProvider = new DoctrineLinksProvider($em);
         $links = $linksProvider->forUser($user['id']);
         $soup = LinksRenderer::toHtml($links);
-        echo json_encode(['success' => true, 'html' => $soup]);
+        echo json_encode(['success' => true, 'html' => $soup, 'message' => 'Link ' . $urlName . ' has been successfully added.']);
     } else {
-        echo json_encode(['success' => false, 'html' => '']);
+        echo json_encode(['success' => false, 'html' => '', 'message' => 'Link could not be added. It is probably already in use.']);
     }
 } catch (ORMException $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
