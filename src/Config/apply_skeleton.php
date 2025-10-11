@@ -17,12 +17,16 @@ $pdo = new PDO($dsn, $user, $pass, [
 /**
  * Split SQL script honoring DELIMITER changes (e.g., DELIMITER // ... //).
  * Returns an array of executable statements (without DELIMITER lines and without trailing delimiters).
+ * @param string $sql
+ * @return list<string>
  */
 function split_sql_with_delimiters(string $sql): array
 {
+    /** @var list<string> $lines */
     $lines = preg_split("/\R/u", $sql);
     $delimiter = ';';
     $buffer = '';
+    /** @var list<string> $stmts */
     $stmts = [];
 
     foreach ($lines as $rawLine) {
@@ -66,17 +70,38 @@ function split_sql_with_delimiters(string $sql): array
         $stmts[] = rtrim($buffer);
     }
 
-    // Remove empty / comment-only statements for safety
-    $stmts = array_values(array_filter($stmts, function ($s) {
-        $t = trim($s);
-        if ($t === '') return false;
-        // strip single-line comments and check again
-        $t2 = preg_replace('/^\s*--.*$/m', '', $t);
-        $t2 = preg_replace('#/\*.*?\*/#s', '', $t2);
-        return trim($t2) !== '';
-    }));
+    // Remove empty/comment-only statements
+    /** @var list<string> $filtered */
+    $filtered = [];
+    foreach ($stmts as $s) {
+        if (!isEffectivelyEmptySql($s)) {
+            $filtered[] = $s;
+        }
+    }
+    return $filtered;
+}
 
-    return $stmts;
+/**
+ * Determine if the SQL string is empty or only comments/whitespace.
+ *
+ * @param string $s
+ * @return bool
+ */
+function isEffectivelyEmptySql(string $s): bool
+{
+    // Remove -- line comments
+    $noLineComments = preg_replace('/^\s*--.*$/m', '', $s);
+    if ($noLineComments === null) {
+        $noLineComments = $s; // fallback (shouldn't happen)
+    }
+
+    // Remove /* ... */ comments
+    $noBlockComments = preg_replace('#/\*.*?\*/#s', '', $noLineComments);
+    if ($noBlockComments === null) {
+        $noBlockComments = $noLineComments; // fallback (shouldn't happen)
+    }
+
+    return trim($noBlockComments) === '';
 }
 
 $statements = split_sql_with_delimiters($sql);
