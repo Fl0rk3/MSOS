@@ -18,6 +18,19 @@ CREATE DATABASE `__blueprint` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 -- ==========================================================
 USE `__blueprint`;
 
+CREATE TABLE `users`
+(
+    `user_id`    int(8)       NOT NULL AUTO_INCREMENT,
+    `username`   varchar(40)  NOT NULL,
+    `password`   varchar(256) NOT NULL,
+    `is_admin`   tinyint(1)   NOT NULL DEFAULT 0,
+    `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`),
+    UNIQUE KEY `username` (`username`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
 CREATE TABLE `links`
 (
     `link_id` int(8)       NOT NULL AUTO_INCREMENT,
@@ -43,15 +56,14 @@ CREATE TABLE `subjects`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `users`
+CREATE TABLE `user_settings`
 (
-    `user_id`    int(8)       NOT NULL AUTO_INCREMENT,
-    `username`   varchar(40)  NOT NULL,
-    `password`   varchar(256) NOT NULL,
-    `is_admin`   tinyint(1)   NOT NULL DEFAULT 0,
-    `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `user_id`       int(8)       NOT NULL,
+    `setting_name`  varchar(255) NOT NULL,
+    `setting_value` varchar(20)  NOT NULL,
     PRIMARY KEY (`user_id`),
-    UNIQUE KEY `username` (`username`)
+    PRIMARY KEY (`setting_name`),
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
