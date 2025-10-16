@@ -135,13 +135,14 @@ $user_settings = $settingsProvider->forUser($user['id']);
         <?php
         echo \MSOS\backend\ctrl\SettingsRenderer::toHtml($user_settings);
         ?>
-        <input type="button" value="Save" id="viewSettings_save">
+        <input type="button" value="Save" id="viewSettings_button">
     </div>
 </div>
 
 <div class="alerts_display" id="alerts_display"></div>
 
 <script src="../src/Ajax/linksajax.js"></script>
+<script src="../src/Ajax/settingsajax.js"></script>
 </body>
 
 </html>

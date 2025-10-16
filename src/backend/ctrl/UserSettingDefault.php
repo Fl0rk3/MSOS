@@ -25,7 +25,7 @@ class UserSettingDefault
             SettingConstants::SETTING_SYSTEM_COLOR_MODE => 'dark',
             SettingConstants::SETTING_DAY_START_HOUR => '07:00',
             SettingConstants::SETTING_DAY_END_HOUR => '21:00',
-            SettingConstants::SETTING_FIRST_WEEK_DAY => 'Monday',
+            SettingConstants::SETTING_FIRST_WEEK_DAY => 'monday',
         ];
     }
 

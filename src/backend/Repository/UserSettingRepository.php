@@ -9,12 +9,15 @@ use MSOS\backend\ctrl\UserSettingDefault;
 use MSOS\backend\Entity\User;
 use MSOS\backend\Entity\UserSetting;
 
+/**
+ * @extends EntityRepository<UserSetting>
+ */
 class UserSettingRepository extends EntityRepository
 {
     /**
-     * @return UserSetting[]
+     * @return ?UserSetting[]
      */
-    public function findAllForUser(?User $user): array
+    public function findAllForUser(?User $user): ?array
     {
         return $this->findBy(['user' => $user]);
     }
