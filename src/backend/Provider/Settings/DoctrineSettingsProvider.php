@@ -25,16 +25,19 @@ class DoctrineSettingsProvider implements SettingsProvider
         /** @var UserSettingRepository $repo */
         $repo = $this->em->getRepository(UserSetting::class);
         $user_settings = $repo->findAllForUser($user_ref);
-        return array_column(
-            array_map(
-                fn(UserSetting $l) => [
-                    'settingName' => $l->getSettingName(),
-                    'settingValue' => $l->getSettingValue()
-                ],
-                $user_settings
-            ),
-            'settingValue',
-            'settingName'
-        );
+        if ($user_settings) {
+            return array_column(
+                array_map(
+                    fn(UserSetting $l) => [
+                        'settingName' => $l->getSettingName(),
+                        'settingValue' => $l->getSettingValue()
+                    ],
+                    $user_settings
+                ),
+                'settingValue',
+                'settingName'
+            );
+        }
+        return [];
     }
 }

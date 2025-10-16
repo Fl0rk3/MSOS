@@ -8,18 +8,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use MSOS\backend\Entity\User;
 use MSOS\backend\Entity\UserSetting;
-use MSOS\backend\Provider\Links\DoctrineLinksProvider;
 use MSOS\backend\Repository\UserSettingRepository;
 
 class SettingQuery
 {
-    private DoctrineLinksProvider $doctrineLinksProvider;
-
     function __construct(
         private EntityManagerInterface $em,
     )
     {
-        $this->doctrineLinksProvider = new DoctrineLinksProvider($this->em);
     }
 
     /**

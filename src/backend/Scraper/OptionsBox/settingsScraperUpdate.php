@@ -18,6 +18,8 @@ if (!$user) {
     exit;
 }
 
+$post_settings = [];
+
 foreach ($_POST as $setting_name => $value) {
     if (!is_string($setting_name) || !is_string($value)) {
         echo json_encode(['success' => false, 'message' => 'Invalid parameters.']);
@@ -27,6 +29,7 @@ foreach ($_POST as $setting_name => $value) {
     if ($setting_name === '' || $value === '') {
         echo json_encode(['success' => false, 'message' => 'Parameters cannot be empty.']);
     }
+    $post_settings[$setting_name] = $value;
 }
 
 /** @var EntityManagerInterface $em */
@@ -36,7 +39,7 @@ $em = require __DIR__ . '/../../../Config/bootstrap.php';
 $setting_query = new SettingQuery($em);
 
 try {
-    $result = $setting_query->updateSettings($user['id'], $_POST);
+    $result = $setting_query->updateSettings($user['id'], $post_settings);
     if ($result === 'true') {
         echo json_encode(['success' => true, 'message' => 'Settings has been successfully changed.']);
     } elseif ($result === 'no_change') {
