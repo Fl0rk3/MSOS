@@ -49,9 +49,6 @@ function deleteLink(linkName) {
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {
-            document.getElementById('option_window').classList.remove('active_window')
-            document.getElementById('addLink_box').classList.remove('active_box')
-
             const alertBox = document.createElement("div");
             alertBox.classList.add('alertBox');
             phpResponse = JSON.parse(xhr.response)

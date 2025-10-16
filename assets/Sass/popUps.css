@@ -47,7 +47,6 @@
 .option_window_addLink {
   height: 25vh;
   width: 20vw;
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -80,6 +79,14 @@
   border-radius: 1vh;
   cursor: pointer;
 }
+.option_window_viewSettings {
+  height: 25vh;
+  width: 20vw;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+}
 
 .active_window {
   display: block;
@@ -89,4 +96,4 @@
   display: flex;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22optionsBox.sass%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;;AAEF;EACE;;;AAEJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAEN;EACE;;;AAEF;EACE%22,%22file%22:%22optionsBox.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22popUps.sass%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;;AAEF;EACE;;;AAEJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEJ;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACE;;;AAEF;EACE%22,%22file%22:%22popUps.css%22%7D */

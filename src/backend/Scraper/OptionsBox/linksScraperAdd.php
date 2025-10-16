@@ -5,8 +5,8 @@ namespace MSOS\backend\Scrapers\OptionsBox;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use MSOS\backend\ctrl\LinksRenderer;
-use MSOS\backend\Providers\Links\DoctrineLinksProvider;
-use MSOS\backend\Queries\OptionsBox\LinkQuery;
+use MSOS\backend\Provider\Links\DoctrineLinksProvider;
+use MSOS\backend\Query\OptionsBox\LinkQuery;
 
 session_start();
 

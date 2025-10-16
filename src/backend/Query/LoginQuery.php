@@ -1,6 +1,6 @@
 <?php
 
-namespace MSOS\backend\Queries;
+namespace MSOS\backend\Query;
 
 use Doctrine\ORM\EntityManagerInterface;
 use MSOS\backend\Entity\User;

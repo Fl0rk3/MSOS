@@ -39,7 +39,9 @@ CREATE TABLE `links`
     `url`     varchar(100) NOT NULL,
     PRIMARY KEY (`link_id`),
     KEY `user_id` (`user_id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+    CONSTRAINT fk_links_user
+        FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+            ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
@@ -51,7 +53,9 @@ CREATE TABLE `subjects`
     `name`       varchar(40) NOT NULL,
     PRIMARY KEY (`subject_id`),
     KEY `user_id` (`user_id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+    CONSTRAINT fk_subjects_user
+        FOREIGN KEY (`user_id`) REFERENCES users (`user_id`)
+            ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
@@ -61,9 +65,10 @@ CREATE TABLE `user_settings`
     `user_id`       int(8)       NOT NULL,
     `setting_name`  varchar(255) NOT NULL,
     `setting_value` varchar(20)  NOT NULL,
-    PRIMARY KEY (`user_id`),
-    PRIMARY KEY (`setting_name`),
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+    PRIMARY KEY (`user_id`, `setting_name`),
+    CONSTRAINT fk_settings_user
+        FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+            ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;

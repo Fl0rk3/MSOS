@@ -11,8 +11,11 @@ $user = $_SESSION['userData'] ?? null;
 /** @var Doctrine\ORM\EntityManagerInterface $em */
 $em = require __DIR__ . '/../src/Config/bootstrap.php';
 
-$linksProvider = new \MSOS\backend\Providers\Links\DoctrineLinksProvider($em);
+$linksProvider = new \MSOS\backend\Provider\Links\DoctrineLinksProvider($em);
 $links = $linksProvider->forUser($user['id']);
+
+$settingsProvider = new \MSOS\backend\Provider\Settings\DoctrineSettingsProvider($em);
+$user_settings = $settingsProvider->forUser($user['id']);
 ?>
 
 <!DOCTYPE html>
@@ -25,16 +28,16 @@ $links = $linksProvider->forUser($user['id']);
 
     <link rel="stylesheet" href="../assets/Sass/layout.css">
     <link rel="stylesheet" href="../assets/Sass/index.css">
-    <link rel="stylesheet" href="../assets/Sass/optionsBox.css">
+    <link rel="stylesheet" href="../assets/Sass/popUps.css">
 
     <script src="../assets/Javascript/timer.js"></script>
-    <script src="../assets/Javascript/optionsBox.js"></script>
+    <script src="../assets/Javascript/popUps.js"></script>
     <script src="https://kit.fontawesome.com/9eef710565.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="display_time(); optionsBox();">
+<body onload="display_time(); linksPopUp(); settingsPopUp();">
 <div class="nav">
-    <div class="logo"><a href="#">MSOS v0.031_3</a></div>
+    <div class="logo"><a href="#">MSOS</a></div>
 
     <div class="nav_bar">
         <div class="nav_bar_field"><a href="">Przedmioty</a></div>
@@ -79,8 +82,14 @@ $links = $linksProvider->forUser($user['id']);
                 ?>
             </div>
 
-            <div class="right_nav_user_logout">
-                <a href="../src/backend/Scrapers/logout.php" id="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <div class="right_nav_user_buttons">
+                <div class="right_nav_user_buttons_settings" id="viewSettings">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="right_nav_user_buttons_logout">
+                    <a href="../src/backend/Scraper/logout.php" id="logout"><i
+                                class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
             </div>
         </div>
 
@@ -118,6 +127,15 @@ $links = $linksProvider->forUser($user['id']);
         <input type="text" name="addLink_name" id="addLink_name" placeholder="Nazwa URL">
         <input type="text" name="addLink_link" id="addLink_link" placeholder="URL">
         <input type="button" value="Dodaj" id="addLink_button">
+    </div>
+
+    <div class="option_window_box option_window_viewSettings" id="viewSettings_box">
+        <div class="option_window_box_close" id="viewSettings_close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="option_window_viewSettings_header">User settings</div>
+        <?php
+        echo \MSOS\backend\ctrl\SettingsRenderer::toHtml($user_settings);
+        ?>
+        <input type="button" value="Save" id="viewSettings_save">
     </div>
 </div>
 

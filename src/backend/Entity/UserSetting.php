@@ -6,8 +6,9 @@ namespace MSOS\backend\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use MSOS\backend\Repository\UserSettingRepository;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: UserSettingRepository::class)]
 #[ORM\Table(name: 'user_settings', schema: 'msos')]
 class UserSetting
 {
