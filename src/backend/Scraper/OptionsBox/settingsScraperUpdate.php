@@ -29,11 +29,12 @@ foreach ($_POST as $setting_name => $value) {
 
     if ($setting_name === '' || $value === '') {
         echo json_encode(['success' => false, 'message' => 'ERROR: Parameters cannot be empty.']);
+        exit;
     }
     $post_settings[$setting_name] = $value;
 }
 
-if (strtotime($_POST[SettingConstants::SETTING_DAY_START_HOUR]) >= strtotime($post_settings[SettingConstants::SETTING_DAY_END_HOUR])) {
+if (strtotime($post_settings[SettingConstants::SETTING_DAY_START_HOUR]) >= strtotime($post_settings[SettingConstants::SETTING_DAY_END_HOUR])) {
     echo json_encode(['success' => false, 'message' => 'ERROR: Start hour cannot be later than end hour.']);
     exit;
 }
