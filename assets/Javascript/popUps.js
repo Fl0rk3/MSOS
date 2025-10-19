@@ -1,11 +1,11 @@
 window.addEventListener('DOMContentLoaded', function () {
     const savedAlert = sessionStorage.getItem('settings_alert');
     if (savedAlert) {
-        const {success, message} = JSON.parse(savedAlert);
+        const {message} = JSON.parse(savedAlert);
 
         const alertBox = document.createElement("div");
         alertBox.classList.add('alertBox');
-        alertBox.classList.add(success ? 'alertBox_success' : 'alertBox_error');
+        alertBox.classList.add('alertBox_success');
         alertBox.innerHTML = message;
 
         const displayBox = document.getElementById('alerts_display');
@@ -13,7 +13,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(() => displayBox.removeChild(alertBox), 5000);
 
-        // Clear so it doesn’t show again on next reload
         sessionStorage.removeItem('settings_alert');
     }
 });

@@ -79,13 +79,57 @@
       cursor: pointer
 
   &_viewSettings
-    height: 25vh
     width: 20vw
     flex-direction: column
     justify-content: space-evenly
     align-items: center
     display: none
 
+    &_header
+      font-size: 1.5vw
+      margin-top: 1vh
+      margin-bottom: 1vh
+
+    &_select
+      border: 0
+      margin-left: 0.5vw
+      height: 2.4vh
+      margin-bottom: 0.9vh
+      font-size: 1.1vw
+      width: 17vw
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+
+      select
+        width: 5.5vw
+        font-size: 0.9vw
+        border: 0
+        border-bottom: 1px solid white
+        background: #1e1e1e
+        color: white
+
+      select:focus
+        outline: none
+        box-shadow: none
+        -webkit-box-shadow: none
+
+      select option:checked
+        background: white
+        color: #1e1e1e
+
+    input[type=button]
+      height: 4vh
+      width: 15vw
+      font-size: 1.2vw
+      font-weight: 900
+      background: white
+      border: 0.3vh white solid
+      color: black
+      border-radius: 1vh
+      cursor: pointer
+      margin-top: 1.3vh
+      margin-bottom: 1.5vh
 
 .active_window
   display: block

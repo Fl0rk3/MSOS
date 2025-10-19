@@ -21,7 +21,6 @@ document.getElementById('viewSettings_button').addEventListener('click', functio
             phpResponse = JSON.parse(xhr.response)
             if (phpResponse['success']) {
                 sessionStorage.setItem('settings_alert', JSON.stringify({
-                    success: true,
                     message: phpResponse.message
                 }));
 
