@@ -1,5 +1,12 @@
 <?php
 
+use Doctrine\ORM\Exception\ORMException;
+use MSOS\backend\Constants\SettingConstants;
+use MSOS\backend\ctrl\LinksRenderer;
+use MSOS\backend\ctrl\SettingsRenderer;
+use MSOS\backend\Provider\Links\DoctrineLinksProvider;
+use MSOS\backend\Provider\Settings\DoctrineSettingsProvider;
+
 session_start();
 
 if (!isset($_SESSION['is_logged'])) {
@@ -11,11 +18,19 @@ $user = $_SESSION['userData'] ?? null;
 /** @var Doctrine\ORM\EntityManagerInterface $em */
 $em = require __DIR__ . '/../src/Config/bootstrap.php';
 
-$linksProvider = new \MSOS\backend\Provider\Links\DoctrineLinksProvider($em);
-$links = $linksProvider->forUser($user['id']);
+$linksProvider = new DoctrineLinksProvider($em);
+try {
+    $links = $linksProvider->forUser($user['id']);
+} catch (ORMException $e) {
 
-$settingsProvider = new \MSOS\backend\Provider\Settings\DoctrineSettingsProvider($em);
-$user_settings = $settingsProvider->forUser($user['id']);
+}
+
+$settingsProvider = new DoctrineSettingsProvider($em);
+try {
+    $user_settings = $settingsProvider->forUser($user['id']);
+} catch (ORMException $e) {
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +50,7 @@ $user_settings = $settingsProvider->forUser($user['id']);
     <script src="https://kit.fontawesome.com/9eef710565.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="display_time(); linksPopUp(); settingsPopUp();">
+<body onload="display_time('<?php echo $user_settings[SettingConstants::SETTING_TIME_FORMAT] ?>'); linksPopUp(); settingsPopUp();">
 <div class="nav">
     <div class="logo"><a href="#">MSOS</a></div>
 
@@ -103,7 +118,7 @@ $user_settings = $settingsProvider->forUser($user['id']);
 
             <div class="right_nav_links_bar" id="right_nav_links_bar">
                 <?php
-                echo \MSOS\backend\ctrl\LinksRenderer::toHtml($links);
+                echo LinksRenderer::toHtml($links);
                 ?>
             </div>
         </div>
@@ -133,7 +148,7 @@ $user_settings = $settingsProvider->forUser($user['id']);
         <div class="option_window_box_close" id="viewSettings_close"><i class="fa-solid fa-xmark"></i></div>
         <div class="option_window_viewSettings_header">User settings</div>
         <?php
-        echo \MSOS\backend\ctrl\SettingsRenderer::toHtml($user_settings);
+        echo SettingsRenderer::toHtml($user_settings);
         ?>
         <input type="button" value="Save" id="viewSettings_button">
     </div>
