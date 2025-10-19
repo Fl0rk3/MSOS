@@ -3,7 +3,7 @@
 namespace MSOS\backend\Scrapers;
 
 use Doctrine\ORM\EntityManagerInterface;
-use MSOS\backend\Queries\LoginQuery;
+use MSOS\backend\Query\LoginQuery;
 
 session_start();
 

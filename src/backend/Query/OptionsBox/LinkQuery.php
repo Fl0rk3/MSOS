@@ -1,12 +1,12 @@
 <?php
 
-namespace MSOS\backend\Queries\OptionsBox;
+namespace MSOS\backend\Query\OptionsBox;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use MSOS\backend\Entity\Link;
 use MSOS\backend\Entity\User;
-use MSOS\backend\Providers\Links\DoctrineLinksProvider;
+use MSOS\backend\Provider\Links\DoctrineLinksProvider;
 
 class LinkQuery
 {

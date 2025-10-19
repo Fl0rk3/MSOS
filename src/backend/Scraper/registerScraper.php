@@ -3,8 +3,8 @@
 namespace MSOS\backend\Scrapers;
 
 use Doctrine\ORM\EntityManagerInterface;
-use MSOS\backend\Queries\LoginQuery;
-use MSOS\backend\Queries\RegisterQuery;
+use MSOS\backend\Query\LoginQuery;
+use MSOS\backend\Query\RegisterQuery;
 
 session_start();
 
@@ -50,7 +50,7 @@ $LQ = new LoginQuery($em);
 
 if ($LQ->isUserExist($login)) {
     $_SESSION['errorRegister'] = 'Username is already taken.';
-    header('Location: ./../../Sites/home.Php');
+    header('Location: ./../../../public/Sites/home.php');
 }
 
 $RQ = new RegisterQuery($em);

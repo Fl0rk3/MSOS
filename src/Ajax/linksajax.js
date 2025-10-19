@@ -6,7 +6,7 @@ document.getElementById('addLink_button').addEventListener('click', function () 
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', './../src/backend/scrapers/optionsBox/linksScraperAdd.php', true);
+    xhr.open('POST', './../src/backend/Scraper/OptionsBox/linksScraperAdd.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {
@@ -45,13 +45,10 @@ function deleteLink(linkName) {
     sendValue = "urlName=" + linkName
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', './../src/backend/scrapers/optionsBox/linksScraperRemove.php', true);
+    xhr.open('POST', './../src/backend/Scraper/OptionsBox/linksScraperRemove.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {
-            document.getElementById('option_window').classList.remove('active_window')
-            document.getElementById('addLink_box').classList.remove('active_box')
-
             const alertBox = document.createElement("div");
             alertBox.classList.add('alertBox');
             phpResponse = JSON.parse(xhr.response)
