@@ -49,7 +49,7 @@ class SettingConstants
             '24h' => '24h',
         ],
         self::SETTING_SYSTEM_COLOR_MODE => [
-            'light' => 'Light',
+//            'light' => 'Light',
             'dark' => 'Dark',
         ],
         self::SETTING_DAY_START_HOUR => self::HOURS,
