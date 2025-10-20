@@ -15,7 +15,7 @@ session_start();
 $user = $_SESSION['userData'] ?? null;
 
 if (!$user) {
-    echo json_encode(['success' => false, 'message' => 'ERROR: User error.']);
+    echo json_encode(['success' => false, 'message' => 'alert.error.user_error']);
     exit;
 }
 
@@ -23,19 +23,19 @@ $post_settings = [];
 
 foreach ($_POST as $setting_name => $value) {
     if (!is_string($setting_name) || !is_string($value)) {
-        echo json_encode(['success' => false, 'message' => 'ERROR: Invalid parameters.']);
+        echo json_encode(['success' => false, 'message' => 'alert.error.invalid_parameters']);
         exit;
     }
 
     if ($setting_name === '' || $value === '') {
-        echo json_encode(['success' => false, 'message' => 'ERROR: Parameters cannot be empty.']);
+        echo json_encode(['success' => false, 'message' => 'alert.error.empty_parameters']);
         exit;
     }
     $post_settings[$setting_name] = $value;
 }
 
 if (strtotime($post_settings[SettingConstants::SETTING_DAY_START_HOUR]) >= strtotime($post_settings[SettingConstants::SETTING_DAY_END_HOUR])) {
-    echo json_encode(['success' => false, 'message' => 'ERROR: Start hour cannot be later than end hour.']);
+    echo json_encode(['success' => false, 'message' => 'alert.error.time_later']);
     exit;
 }
 
@@ -48,11 +48,11 @@ $setting_query = new SettingQuery($em);
 try {
     $result = $setting_query->updateSettings($user['id'], $post_settings);
     if ($result === 'true') {
-        echo json_encode(['success' => true, 'message' => 'Settings has been successfully changed.']);
+        echo json_encode(['success' => true, 'message' => 'alert.success.settings_update']);
     } elseif ($result === 'no_change') {
-        echo json_encode(['success' => false, 'message' => 'ERROR: No changes have been made.']);
+        echo json_encode(['success' => false, 'message' => 'alert.error.no_changes']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'ERROR: Settings could not be changed.']);
+        echo json_encode(['success' => false, 'message' => 'alert.error.settings_problem']);
     }
 } catch (ORMException $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";

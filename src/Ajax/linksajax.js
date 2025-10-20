@@ -18,13 +18,13 @@ document.getElementById('addLink_button').addEventListener('click', function () 
             phpResponse = JSON.parse(xhr.response)
             if (phpResponse['success']) {
                 alertBox.classList.add('alertBox_success');
-                alertBox.innerHTML = phpResponse['message'];
+                alertBox.innerHTML = I18N.t(phpResponse['message_key'], phpResponse['message_vars']);
                 document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
                 document.getElementById('addLink_name').value = '';
                 document.getElementById('addLink_link').value = '';
             } else {
                 alertBox.classList.add('alertBox_error');
-                alertBox.innerHTML = phpResponse['message'];
+                alertBox.innerHTML = I18N.t(phpResponse['message']);
             }
             const displayBox = document.getElementById('alerts_display');
             displayBox.appendChild(alertBox)
@@ -34,7 +34,7 @@ document.getElementById('addLink_button').addEventListener('click', function () 
             }, 5000);
         } else {
             alertBox.classList.add('alertBox_error');
-            alertBox.innerHTML = "Connection error. Please try again."
+            alertBox.innerHTML = I18N.t("alert.error.connection_error");
         }
     };
 
@@ -54,11 +54,11 @@ function deleteLink(linkName) {
             phpResponse = JSON.parse(xhr.response)
             if (phpResponse['success']) {
                 alertBox.classList.add('alertBox_success');
-                alertBox.innerHTML = phpResponse['message']
+                alertBox.innerHTML = I18N.t(phpResponse['message_key'], phpResponse['message_vars']);
                 document.getElementById('right_nav_links_bar').innerHTML = phpResponse['html'];
             } else {
                 alertBox.classList.add('alertBox_error');
-                alertBox.innerHTML = phpResponse['message']
+                alertBox.innerHTML = I18N.t(phpResponse['message']);
             }
             const displayBox = document.getElementById('alerts_display');
             displayBox.appendChild(alertBox)
@@ -68,7 +68,7 @@ function deleteLink(linkName) {
             }, 5000);
         } else {
             alertBox.classList.add('alertBox_error');
-            alertBox.innerHTML = "Connection error. Please try again."
+            alertBox.innerHTML = I18N.t("alert.error.connection_error");
         }
     };
 

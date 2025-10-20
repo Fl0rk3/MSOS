@@ -14,7 +14,7 @@ session_start();
 $user = $_SESSION['userData'] ?? null;
 
 if (!$user) {
-    echo json_encode(['success' => false, 'html' => '', 'message' => 'User error.']);
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'alert.error.user_error']);
     exit;
 }
 
@@ -23,7 +23,7 @@ $rawName = $_POST['urlName'] ?? null;
 $rawUrl = $_POST['url'] ?? null;
 
 if (!is_string($rawName) || !is_string($rawUrl)) {
-    echo json_encode(['success' => false, 'html' => '', 'message' => 'Invalid parameters.']);
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'alert.error.invalid_parameters']);
     exit;
 }
 
@@ -31,7 +31,7 @@ $urlName = trim($rawName);
 $url = trim($rawUrl);
 
 if ($urlName === '' || $url === '') {
-    echo json_encode(['success' => false, 'html' => '', 'message' => 'Name and URL cannot be empty.']);
+    echo json_encode(['success' => false, 'html' => '', 'message' => 'alert.error.empty_parameters']);
     exit;
 }
 
@@ -45,9 +45,9 @@ try {
         $linksProvider = new DoctrineLinksProvider($em);
         $links = $linksProvider->forUser($user['id']);
         $soup = LinksRenderer::toHtml($links);
-        echo json_encode(['success' => true, 'html' => $soup, 'message' => 'Link ' . $urlName . ' has been successfully added.']);
+        echo json_encode(['success' => true, 'html' => $soup, 'message_key' => 'alert.success.url_added', 'message_vars' => ['url_name' => $urlName]]);
     } else {
-        echo json_encode(['success' => false, 'html' => '', 'message' => 'Link could not be added. It is probably already in use.']);
+        echo json_encode(['success' => false, 'html' => '', 'message' => 'alert.error.url_used']);
     }
 } catch (ORMException $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";

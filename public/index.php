@@ -45,18 +45,21 @@ try {
     <link rel="stylesheet" href="../assets/Sass/index.css">
     <link rel="stylesheet" href="../assets/Sass/popUps.css">
 
+    <script>
+        window.APP_LOCALE = <?= json_encode($user_settings[SettingConstants::SETTING_SYSTEM_LANGUAGE]) ?>;
+    </script>
+    <script src="../assets/Javascript/i18n.js" defer></script>
     <script src="../assets/Javascript/timer.js"></script>
     <script src="../assets/Javascript/popUps.js"></script>
     <script src="https://kit.fontawesome.com/9eef710565.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="display_time('<?php echo $user_settings[SettingConstants::SETTING_TIME_FORMAT] ?>'); linksPopUp(); settingsPopUp();">
+<body onload="display_time('<?= $user_settings[SettingConstants::SETTING_TIME_FORMAT] ?>'); linksPopUp(); settingsPopUp();">
 <div class="nav">
-    <div class="logo"><a href="#">MSOS</a></div>
+    <div class="logo" data-i18n="common.title"></div>
 
     <div class="nav_bar">
-        <div class="nav_bar_field"><a href="">Przedmioty</a></div>
-        <div class="nav_bar_field"><a href="">Plan Zajęć</a></div>
+        <div class="nav_bar_field"><a href="" data-i18n="home.subjects"></a></div>
     </div>
 
     <div id="time"></div>
@@ -66,21 +69,21 @@ try {
     <div class="calendar">
         <div class="calendar_nav">
             <div class="calendar_nav_header">
-                <div class="calendar_nav_header_field" id="homework">Domowe</div>
-                <div class="calendar_nav_header_field" id="exams">Kolokwia</div>
-                <div class="calendar_nav_header_field" id="notes">Notatki</div>
+                <div class="calendar_nav_header_field" id="homeworks" data-i18n="home.homeworks"></div>
+                <div class="calendar_nav_header_field" id="exams" data-i18n="home.exams"></div>
+                <div class="calendar_nav_header_field" id="notes" data-i18n="home.notes"></div>
             </div>
 
             <div class="calendar_nav_bar">
-                <div class="calendar_nav_bar_field">Dodaj</div>
+                <div class="calendar_nav_bar_field" data-i18n="global.add"></div>
             </div>
         </div>
         <div class="calendar_list">
             <div class="calendar_list_header">
                 <div class="calendar_list_header_field"></div>
-                <div class="calendar_list_header_field">Przedmiot</div>
-                <div class="calendar_list_header_field">Opis</div>
-                <div class="calendar_list_header_field">Data</div>
+                <div class="calendar_list_header_field" data-i18n="home.subject"></div>
+                <div class="calendar_list_header_field" data-i18n="home.description"></div>
+                <div class="calendar_list_header_field" data-i18n="global.date"></div>
             </div>
 
             <div class="calendar_list_fields">
@@ -92,8 +95,9 @@ try {
     <div class="right_nav">
         <div class="right_nav_user">
             <div class="right_nav_user_name">
-                <?php
-                echo 'Użytkownik: ' . $user['username'] . '<br/>';
+                <span data-i18n="global.user"></span>:
+                <?=
+                $user['username'] . '<br/>';
                 ?>
             </div>
 
@@ -112,13 +116,13 @@ try {
 
         <div class="right_nav_links">
             <div class="right_nav_links_main">
-                <div class="right_nav_links_main_title">Przydatne linki</div>
+                <div class="right_nav_links_main_title" data-i18n="home.useful_urls"></div>
                 <div class="right_nav_links_main_add" id="addLink"><i class="fa-solid fa-plus"></i></div>
             </div>
 
             <div class="right_nav_links_bar" id="right_nav_links_bar">
-                <?php
-                echo LinksRenderer::toHtml($links);
+                <?=
+                LinksRenderer::toHtml($links);
                 ?>
             </div>
         </div>
@@ -126,7 +130,7 @@ try {
         <hr class="right_nav_hr">
 
         <div class="right_nav_schedule">
-            <div class="right_nav_schedule_title">Najbliższe zajęcia:</div>
+            <div class="right_nav_schedule_title" data-i18n="home.upcoming_classes"></div>
         </div>
     </div>
 </div>
@@ -137,20 +141,22 @@ try {
 <div class="option_window" id="option_window">
     <div class="option_window_box option_window_addLink" id="addLink_box">
         <div class="option_window_box_close" id="addLink_close"><i class="fa-solid fa-xmark"></i></div>
-        <div class="option_window_addLink_header">Dodawanie linka</div>
+        <div class="option_window_addLink_header" data-i18n="option.add_url"></div>
 
-        <input type="text" name="addLink_name" id="addLink_name" placeholder="Nazwa URL">
-        <input type="text" name="addLink_link" id="addLink_link" placeholder="URL">
+        <input type="text" name="addLink_name" id="addLink_name" data-i18n-attr="placeholder:option.add_url.url_name"
+               data-i18n-placeholder="option.add_url.url_name">
+        <input type="text" name="addLink_link" id="addLink_link" data-i18n-attr="placeholder:option.add_url.url"
+               data-i18n-placeholder="option.add_url.url">
         <input type="button" value="Dodaj" id="addLink_button">
     </div>
 
     <div class="option_window_box option_window_viewSettings" id="viewSettings_box">
         <div class="option_window_box_close" id="viewSettings_close"><i class="fa-solid fa-xmark"></i></div>
-        <div class="option_window_viewSettings_header">User settings</div>
-        <?php
-        echo SettingsRenderer::toHtml($user_settings);
+        <div class="option_window_viewSettings_header" data-i18n="option.settings.name"></div>
+        <?=
+        SettingsRenderer::toHtml($user_settings);
         ?>
-        <input type="button" value="Save" id="viewSettings_button">
+        <input type="button" id="viewSettings_button" data-i18n-attr="value:global.save">
     </div>
 </div>
 

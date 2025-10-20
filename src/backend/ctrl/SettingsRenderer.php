@@ -6,7 +6,7 @@ namespace MSOS\backend\ctrl;
 
 use MSOS\backend\Constants\SettingConstants;
 
-class SettingsRenderer
+final class SettingsRenderer
 {
     /**
      * @param array<string, string> $user_settings
@@ -16,7 +16,7 @@ class SettingsRenderer
         $out = '';
         foreach (SettingConstants::SETTING_OPTIONS as $setting_name => $setting_options) {
             $out .= "<div class='option_window_viewSettings_select'>";
-            $out .= "<label for='" . $setting_name . "'>" . $setting_name . "</label>";
+            $out .= "<label for='" . $setting_name . "' data-i18n='option.settings." . $setting_name . "'>" . "</label>";
             $out .= "<select id='" . $setting_name . "'>";
             foreach ($setting_options as $value => $label) {
                 $selected = '';
