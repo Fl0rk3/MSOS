@@ -31,7 +31,7 @@ document.getElementById('viewSettings_button').addEventListener('click', functio
                 const alertBox = document.createElement("div");
                 alertBox.classList.add('alertBox');
                 alertBox.classList.add('alertBox_error');
-                alertBox.innerHTML = phpResponse['message'];
+                alertBox.innerHTML = I18N.t(phpResponse['message']);
 
                 const displayBox = document.getElementById('alerts_display');
                 displayBox.appendChild(alertBox)
@@ -42,7 +42,7 @@ document.getElementById('viewSettings_button').addEventListener('click', functio
             }
         } else {
             alertBox.classList.add('alertBox_error');
-            alertBox.innerHTML = "Connection error. Please try again."
+            alertBox.innerHTML = I18N.t("alert.error.connection_error");
         }
     };
 

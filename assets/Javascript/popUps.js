@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', async function () {
     const savedAlert = sessionStorage.getItem('settings_alert');
     if (savedAlert) {
         const {message} = JSON.parse(savedAlert);
@@ -6,7 +6,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const alertBox = document.createElement("div");
         alertBox.classList.add('alertBox');
         alertBox.classList.add('alertBox_success');
-        alertBox.innerHTML = message;
+        await I18N.ready;
+        alertBox.innerHTML = I18N.t(message);
 
         const displayBox = document.getElementById('alerts_display');
         displayBox.appendChild(alertBox);
