@@ -24,18 +24,6 @@ const I18N = (() => {
         apply();
     };
 
-    // const t = (key, vars = {}) =>
-    //     (messages[key] ?? key).replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
-
-    // const t = (key, vars = {}) => {
-    //     let str = messages[key] ?? key;
-    //
-    //     // Combine passed vars + all message keys for lookup
-    //     const allVars = {...messages, ...vars};
-    //
-    //     return str.replace(/\{(\w+)\}/g, (_, k) => allVars[k] ?? `{${k}}`);
-    // };
-
     const PLACEHOLDER = /\{([a-zA-Z0-9_.-]+)\}/g;
 
     const t = (key, vars = {}) => {
