@@ -12,19 +12,19 @@ $password = $_POST['password'];
 
 if (!is_string($login) || !is_string($password)) {
     $_SESSION['errorLogin'] = "Data error.";
-    header('Location: ./../../../public/Sites/home.php');
+    header('Location: ./../../../public/index.php');
     exit;
 }
 
 if ($login === '' || mb_strlen($login) > 40) {
     $_SESSION['errorLogin'] = "Missing or too long username [max 40 characters].";
-    header('Location: ./../../../public/Sites/home.php');
+    header('Location: ./../../../public/index.php');
     exit;
 }
 
 if ($password === '' || mb_strlen($login) > 32) {
     $_SESSION['errorLogin'] = "Missing or too long password [max 32 characters].";
-    header('Location: ./../../../public/Sites/home.php');
+    header('Location: ./../../../public/index.php');
     exit;
 }
 
@@ -43,11 +43,11 @@ if ($userData !== null) {
         'is_admin' => $userData['is_admin']
     ];
     $_SESSION['is_logged'] = true;
-    header('Location: ./../../../public/index.php');
+    header('Location: ./../../../public/Sites/home.php');
     exit;
 }
 
 $_SESSION['errorLogin'] = "Błędne dane logowania.";
-header('Location: ./../../../public/Sites/home.php');
+header('Location: ./../../../public/index.php');
 exit;
 

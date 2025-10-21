@@ -10,8 +10,8 @@ const I18N = (() => {
     const load = async (loc) => {
         locale = loc;
         const [langRes, globalRes] = await Promise.all([
-            fetch(`./../assets/languages/${loc}.json`, {cache: 'no-store'}),
-            fetch(`./../assets/languages/common.json`, {cache: 'no-store'})
+            fetch(`./../../assets/languages/${loc}.json`, {cache: 'no-store'}),
+            fetch(`./../../assets/languages/common.json`, {cache: 'no-store'})
         ]);
 
         const [langMsgs, globalMsgs] = await Promise.all([

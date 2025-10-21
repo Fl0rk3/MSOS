@@ -1,96 +1,147 @@
-.loginBox
-  position: absolute
-  top: 50%
-  left: 50%
-  margin-right: -50%
-  transform: translate(-50%, -50%)
+body
   display: flex
   flex-direction: column
-  align-items: center
-  border: 0.4vh solid white
-  border-radius: 10%
-  width: 25vw
-  height: 28vh
-  overflow: hidden
+  user-select: none
 
-  &_selector
+.nav
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  height: 5vh
+  background: #1a1a1a
+  padding: 0 1vw
+
+  &_bar
     display: flex
-    width: 100%
-    cursor: pointer
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 35vh
 
     &_field
-      width: 50%
-      text-align: center
-      padding: 1vh 0
+      background: white
+      display: flex
+      align-items: center
 
-  .selected
-    background: white
-    color: black
+      a
+        display: block
+        color: black
+        padding: 0 1.5vw
+        height: 5vh
+        line-height: 5vh
 
-  &_form
-    height: 100%
-    display: none
+  #time
+    font-size: 0.8vw
+    text-align: right
 
-  &_form form
+.container
+  display: flex
+  flex-direction: row
+  height: 91.5vh
+  width: 100vw
+
+  .calendar
     display: flex
     flex-direction: column
-    height: 100%
-    justify-content: space-evenly
-    align-items: center
+    width: 76vw
+    margin: 2vh 2vw
+    padding: 1vh 1vw
 
-  #loginBox_login
+    &_nav
+      width: 76vw
+      display: flex
+      flex-direction: row
+      justify-content: space-between
 
-    #login, #password
-      border: 0
-      border-bottom: 0.2vh solid white
-      margin-left: 0.5vw
-      color: white
-      background: #1e1e1e
-      height: 2vh
-      font-size: 1.1vw
-      width: 17vw
+      &_header
+        display: flex
+        flex-direction: row
 
-    #login:focus, #password:focus
-      outline: none
+        &_field
+          background: white
+          color: black
+          width: 10vw
+          padding: 0.5vh 0.2vw
+          margin: 0 0.1vw 0 0
+          text-align: center
 
-    input[type=submit]
-      height: 4vh
-      width: 15vw
-      font-size: 1.2vw
-      font-weight: 900
-      background: white
-      border: 0.3vh white solid
-      color: black
-      border-radius: 1vh
+      &_bar
 
-  #loginBox_register
+        &_field
+          color: black
+          background: white
+          padding: 0.5vh 0.5vw
+          cursor: pointer
 
-    #login_reg, #password_reg, #password_repeat
-      border: 0
-      border-bottom: 0.2vh solid white
-      margin-left: 0.5vw
-      color: white
-      background: #1e1e1e
-      height: 2vh
-      font-size: 1.1vw
-      width: 17vw
+    &_list
+      display: flex
+      flex-direction: column
+      border: 0.3vw solid white
+      border-radius: 0 0 2% 2%
+      height: 80vh
+      padding-top: 1vh
 
-    #login:focus, #password:focus
-      outline: none
+      &_header
+        display: grid
+        grid-template-columns: 1fr 2fr 10fr 2fr
+        column-gap: 0.5vw
+        text-align: center
 
-    input[type=submit]
-      height: 4vh
-      width: 15vw
-      font-size: 1.2vw
-      font-weight: 900
-      background: white
-      border: 0.3vh white solid
-      color: black
-      border-radius: 1vh
+      &_fields
+        display: grid
+        overflow: auto
 
-  .loginBox_selected
-    display: block
+  .right_nav
+    display: flex
+    flex-direction: column
+    width: 20vw
+    margin-top: 7vh
 
-  #error
-    text-align: center
-    color: red
+    &_hr
+      width: 16vw
+      margin: 2vh 0
+
+    &_user
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      margin-right: 2vw
+
+      &_buttons
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        width: 3vw
+
+        &_settings
+          cursor: pointer
+
+    &_links
+      height: 20vh
+
+      &_main
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        margin-right: 2vw
+
+        &_add
+          cursor: pointer
+
+      &_bar
+        &_link
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+          margin-right: 2vw
+
+          &_delete
+            cursor: pointer
+
+    &_schedule
+      height: 40vh
+
+.footer
+  height: 3vh
+  text-align: center

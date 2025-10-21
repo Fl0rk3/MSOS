@@ -3,4 +3,4 @@ session_start();
 
 session_unset();
 
-header("Location: ./../../../public/Sites/home.php");
+header("Location: ./../../../public/index.php");
