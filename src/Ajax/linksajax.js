@@ -6,7 +6,7 @@ document.getElementById('addLink_button').addEventListener('click', function () 
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', './../src/backend/Scraper/OptionsBox/linksScraperAdd.php', true);
+    xhr.open('POST', './../../src/backend/Scraper/OptionsBox/linksScraperAdd.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {
@@ -45,7 +45,7 @@ function deleteLink(linkName) {
     sendValue = "urlName=" + linkName
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', './../src/backend/Scraper/OptionsBox/linksScraperRemove.php', true);
+    xhr.open('POST', './../../src/backend/Scraper/OptionsBox/linksScraperRemove.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {

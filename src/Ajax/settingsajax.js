@@ -12,7 +12,7 @@ document.getElementById('viewSettings_button').addEventListener('click', functio
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', './../src/backend/Scraper/OptionsBox/settingsScraperUpdate.php', true);
+    xhr.open('POST', './../../src/backend/Scraper/OptionsBox/settingsScraperUpdate.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200) {
